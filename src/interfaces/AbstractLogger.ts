@@ -12,7 +12,7 @@ export abstract class AbstractLogger {
   };
 
   public debug(...args: any[]) {
-    console.debug(this.getPrefix(LogLevels.DEBUG), ...args);
+    console.debug(...this.getArgs(LogLevels.DEBUG, args));
   }
 
   public info(...args: any[]) {
@@ -20,8 +20,7 @@ export abstract class AbstractLogger {
   }
 
   public log(...args: any[]) {
-    const filteredArgs = this.getArgs(LogLevels.LOG, args);
-    console.log(...filteredArgs);
+    console.log(...this.getArgs(LogLevels.LOG, args));
   }
 
   public warn(...args: any[]) {

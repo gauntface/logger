@@ -7,7 +7,7 @@ test.beforeEach((t) => {
   t.context.sandbox = sinon.sandbox.create();
 });
 
-test.afterEach((t) => {
+test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
@@ -38,3 +38,29 @@ test.serial('should print log with prefix', (t) => {
   t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;77m${PREFIX}\u001b[39m`, MSG]);
 });
 
+test.serial('should print debug without prefix', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'debug');
+
+  const MSG = 'hello, world';
+
+  const logger = new Logger();
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 1);
+  t.deepEqual(logSpy.getCall(0).args, [MSG]);
+});
+
+test.serial('should print debug with prefix', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'debug');
+
+  const PREFIX = 'hopin-logger-test';
+  const MSG = 'hello, world';
+
+  const logger = new Logger({
+    prefix: PREFIX
+  });
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 1);
+  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;231mhopin-logger-test\u001b[39m`, MSG]);
+});
