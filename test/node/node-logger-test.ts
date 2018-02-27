@@ -1,4 +1,5 @@
 import {test} from 'ava';
+import * as chalk from 'chalk';
 import * as sinon from 'sinon';
 
 import {Logger} from '../../src/node/Logger';
@@ -35,7 +36,8 @@ test.serial('should print debug with prefix', (t) => {
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;231m${PREFIX}\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print info without prefix', (t) => {
@@ -62,7 +64,8 @@ test.serial('should print info with prefix', (t) => {
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;67m${PREFIX}\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print log without prefix', (t) => {
@@ -89,7 +92,8 @@ test.serial('should print log with prefix', (t) => {
   logger.log(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;77m${PREFIX}\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print warn without prefix', (t) => {
@@ -116,7 +120,8 @@ test.serial('should print warn with prefix', (t) => {
   logger.warn(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;179m\u001b[1m${PREFIX}\u001b[22m\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print error without prefix', (t) => {
@@ -143,7 +148,8 @@ test.serial('should print error with prefix', (t) => {
   logger.error(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;203m\u001b[1m${PREFIX}\u001b[22m\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print group without prefix', (t) => {
@@ -183,7 +189,8 @@ test.serial('should print group with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;39m${PREFIX}\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
 });
 
@@ -224,6 +231,7 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`\u001b[38;5;39m${PREFIX}\u001b[39m`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
 });
