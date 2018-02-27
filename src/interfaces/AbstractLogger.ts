@@ -12,23 +12,43 @@ export abstract class AbstractLogger {
   };
 
   public debug(...args: any[]) {
-    console.debug(...this.getArgs(LogLevels.DEBUG, args));
+    let consoleFunc = console.debug;
+    if (!consoleFunc) {
+      consoleFunc = console.info;
+    }
+    this.print(consoleFunc, LogLevels.DEBUG, args);
   }
 
   public info(...args: any[]) {
-    console.info(this.getPrefix(LogLevels.INFO), ...args);
+    this.print(console.info, LogLevels.INFO, args);
   }
 
   public log(...args: any[]) {
-    console.log(...this.getArgs(LogLevels.LOG, args));
+    this.print(console.log, LogLevels.LOG, args);
   }
 
   public warn(...args: any[]) {
-    // console.warn(...this.getArgs(LogLevels.WARN, args));
+    this.print(console.warn, LogLevels.WARN, args);
   }
 
   public error(...args: any[]) {
-    console.error(this.getPrefix(LogLevels.ERROR), ...args);
+    this.print(console.error, LogLevels.ERROR, args);
+  }
+
+  public group(...args: any[]) {
+    this.print(console.group, LogLevels.GROUP, args);
+  }
+
+  public groupCollapsed(...args: any[]) {
+    this.print(console.groupCollapsed, LogLevels.GROUP, args);
+  }
+
+  public groupEnd() {
+    console.groupEnd();
+  }
+
+  private print(consoleFunc: Function, logLevel: LogLevels.LogLevel, args: any[]) {
+    consoleFunc(...this.getArgs(logLevel, args));
   }
 
   private getArgs(logLevel: LogLevels.LogLevel, args: any[]): any[] {

@@ -19,9 +19,11 @@ export class Logger extends AbstractLogger {
       case LogLevels.LOG:
         return chalk.hex(LogColors.LOG);
       case LogLevels.WARN:
-        return chalk.hex(LogColors.WARN);
+        return chalk.hex(LogColors.WARN).bold;
       case LogLevels.ERROR:
-        return chalk.hex(LogColors.ERROR);
+        return chalk.hex(LogColors.ERROR).bold;
+      case LogLevels.GROUP:
+        return chalk.hex(LogColors.GROUP);
     }
   }
 }
