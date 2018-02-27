@@ -9,9 +9,10 @@ export abstract class AbstractLogger {
 
   constructor(opts?: LoggerOpts) {
     this.opts = opts || {};
-  };
+  }
 
-  public debug(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  debug(...args: any[]) {
     let consoleFunc = console.debug;
     if (!consoleFunc) {
       consoleFunc = console.info;
@@ -19,51 +20,59 @@ export abstract class AbstractLogger {
     this.print(consoleFunc, LogLevels.DEBUG, args);
   }
 
-  public info(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  info(...args: any[]) {
     this.print(console.info, LogLevels.INFO, args);
   }
 
-  public log(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  log(...args: any[]) {
     this.print(console.log, LogLevels.LOG, args);
   }
 
-  public warn(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  warn(...args: any[]) {
     this.print(console.warn, LogLevels.WARN, args);
   }
 
-  public error(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  error(...args: any[]) {
     this.print(console.error, LogLevels.ERROR, args);
   }
 
-  public group(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  group(...args: any[]) {
     this.print(console.group, LogLevels.GROUP, args);
   }
 
-  public groupCollapsed(...args: any[]) {
+  // tslint:disable-next-line:no-any
+  groupCollapsed(...args: any[]) {
     this.print(console.groupCollapsed, LogLevels.GROUP, args);
   }
 
-  public groupEnd() {
+  groupEnd() {
     console.groupEnd();
   }
 
+  // tslint:disable-next-line:no-any
   private print(consoleFunc: Function, logLevel: LogLevels.LogLevel, args: any[]) {
     consoleFunc(...this.getArgs(logLevel, args));
   }
 
+  // tslint:disable-next-line:no-any
   private getArgs(logLevel: LogLevels.LogLevel, args: any[]): any[] {
     const prefix = this.getPrefix(logLevel);
     if (prefix) {
-      return [prefix, ...args];
+      return [...prefix, ...args];
     }
     return args;
   }
 
-  private getPrefix(logLevel: LogLevels.LogLevel): string|void {
+  private getPrefix(logLevel: LogLevels.LogLevel): string[]|void {
     if (this.opts.prefix) {
       return this.colorPrefix(logLevel, this.opts.prefix);
     }
   }
 
-  protected abstract colorPrefix(level: LogLevels.LogLevel, prefix: string): string;
+  protected abstract colorPrefix(level: LogLevels.LogLevel, prefix: string): string[];
 }

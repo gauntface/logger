@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2017",
     "module": "commonjs",
     "noImplicitAny": true,
     "removeComments": true,
@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*",
-    "test/**/*",
+    "test/**/*"
   ],
   "exclude": [
     "node_modules",

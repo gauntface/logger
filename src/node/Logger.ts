@@ -5,12 +5,16 @@ import * as LogLevels from '../types/LogLevels';
 import * as LogColors from '../types/LogColors';
 
 export class Logger extends AbstractLogger {
-  protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string {
-    const color = this.getChalkColor(logLevel);
-    return color(prefix);
+  protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string[] {
+    const colorFunc = this.getChalkColor(logLevel);
+    if (colorFunc) {
+      return [colorFunc(prefix)];
+    } else {
+      return [prefix];
+    }
   }
 
-  private getChalkColor(logLevel: LogLevels.LogLevel): Function {
+  private getChalkColor(logLevel: LogLevels.LogLevel): Function|null {
     switch(logLevel) {
       case LogLevels.DEBUG:
         return chalk.hex(LogColors.DEBUG);
@@ -24,6 +28,8 @@ export class Logger extends AbstractLogger {
         return chalk.hex(LogColors.ERROR).bold;
       case LogLevels.GROUP:
         return chalk.hex(LogColors.GROUP);
+      default:
+        return null;
     }
   }
 }
