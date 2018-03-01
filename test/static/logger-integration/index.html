@@ -1,0 +1,28 @@
+<h1>Hello from Logger Integration</h1>
+
+<!-- This is accessible due to another statuc serve in TestServer.ts -->
+<script src="/browser/Logger.js"></script>
+<script>
+  const prefixedLogger = new Logger({
+    prefix: 'hoping-logger-test',
+  });
+  prefixedLogger.debug('hello, debug');
+  prefixedLogger.info('hello, info');
+  prefixedLogger.log('hello, log');
+  prefixedLogger.warn('hello, warn');
+  prefixedLogger.error('hello, error');
+
+  prefixedLogger.group('hello, group 1');
+  prefixedLogger.log('hello, log group 1');
+  prefixedLogger.group('hello, group 2');
+  prefixedLogger.log('hello, log group 2');
+  prefixedLogger.groupEnd();
+  prefixedLogger.groupEnd();
+
+  prefixedLogger.groupCollapsed('hello, groupCollapsed 1');
+  prefixedLogger.log('hello, log group 1');
+  prefixedLogger.groupCollapsed('hello, groupCollapsed 2');
+  prefixedLogger.log('hello, log group 2');
+  prefixedLogger.groupEnd();
+  prefixedLogger.groupEnd();
+</script>
