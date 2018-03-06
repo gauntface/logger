@@ -11,9 +11,7 @@
   },
   "scripts": {
     "ava": "ava ./build/test/{node,integration}/**/*.js",
-    "build": "npm run build:test && npm run build:dist",
-    "build:test": "rm -rf ./build/ && tsc -p ./tsconfigs/node-commonjs.json && cp -R ./test/static ./build/test/static/",
-    "build:dist": "rm -rf ./dist/ && tsc -p ./tsconfigs/es2015-modules.json",
+    "build": "gulp build",
     "lint": "tslint 'src/**/*'",
     "test": "npm run build && npm run ava && npm run lint"
   },

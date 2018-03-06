@@ -7,6 +7,10 @@ function cleanDestDir() {
   return fse.remove(global.__buildConfig.dest);
 }
 
+function cleanTempDir() {
+  return fse.remove(global.__buildConfig.temp);
+}
+
 function build(done) {
   const parallelTasks = [];
   const postBuildTasks = [];
@@ -20,6 +24,7 @@ function build(done) {
 
   const buildTasks = [
     cleanDestDir,
+    cleanTempDir,
     gulp.parallel(parallelTasks),
   ];
 

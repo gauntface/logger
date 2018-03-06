@@ -6,6 +6,7 @@ const getTaskFilepaths = require('./gulp-tasks/utils/get-task-filepaths');
 global.__buildConfig = {
   src: path.join(__dirname, 'src'),
   dest: path.join(__dirname, 'dist'),
+  temp: path.join(__dirname, 'build'),
 };
 
 const loadTasks = () => {

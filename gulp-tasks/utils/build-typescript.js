@@ -1,7 +1,6 @@
 const gulp = require('gulp');
-const ts = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
-const path = require('path');
+const ts = require('gulp-typescript');
 const rename = require('gulp-rename');
 
 function buildTypescript(tsConfigPath, destPath, extname) {
@@ -31,13 +30,6 @@ function buildTypescript(tsConfigPath, destPath, extname) {
   });
 };
 
-function build(done) {
-  return gulp.series(() => {
-    const tsconfig = path.join(__dirname, '..', 'tsconfigs', 'es2015-modules.json');
-    return buildTypescript(tsconfig, global.__buildConfig.dest, '.mjs;');
-  })(done);
-}
-
 module.exports = {
-  build,
+  buildTypescript,
 };
