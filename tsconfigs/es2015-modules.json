@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "es2015",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "outDir": "build"
+    "outDir": "../dist"
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "../src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
+    "../test/**/*",
+    "../node_modules",
+    "../**/*.spec.ts"
   ]
 }
