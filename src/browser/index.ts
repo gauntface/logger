@@ -1,5 +1,7 @@
 import {BrowserLogger} from './BrowserLogger';
-import {getLogger} from './browserLoggerFactory';
+import {BrowserLoggerFactory} from './BrowserLoggerFactory';
+import {getBrowserLogger} from './getBrowserLogger';
 
-export {getLogger};
+export {getBrowserLogger as getLogger};
 export {BrowserLogger as Logger};
+export {BrowserLoggerFactory as LoggerFactory};

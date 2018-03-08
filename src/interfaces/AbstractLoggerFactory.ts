@@ -4,25 +4,25 @@ export interface FactoryOpts {
   forceNew?: boolean;
 }
 
-export abstract class AbstractLoggerFactory {
-  private loggers: {[loggerName: string]: AbstractLogger};
+export abstract class AbstractLoggerFactory<T extends AbstractLogger> {
+  private type: { new(opts?: LoggerOpts): T ;};
+  private loggers: {[loggerName: string]: T};
 
-  constructor() {
+  constructor(type: { new(): T ;} ) {
+    this.type =  type;
     this.loggers = {};
   }
 
-  getLogger(id: string, prefix: string, opts?: FactoryOpts): AbstractLogger {
+  getLogger(id: string, prefix: string, opts?: FactoryOpts): T {
     // TODO: Same id, diff, options - what to do?
     // TODO: Reserve __hopin__ IDs
     // TODO: Implement forceNew
 
     if (!this.loggers[id]) {
-      const newLogger = this.createNewLogger({prefix});
+      const newLogger = new this.type({prefix});
       this.loggers[id] = newLogger;
     }
 
     return this.loggers[id];
   }
-
-  protected abstract createNewLogger(opts: LoggerOpts): AbstractLogger;
 }

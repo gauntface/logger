@@ -1,19 +1,30 @@
 {
   "scripts": {
-    "ava": "ava ./build/test/{node,integration}/**/*.js",
+    "ava": "nyc ava ./build/test/{node,integration}/**/*.js",
     "build": "gulp build",
     "lint": "tslint 'src/**/*'",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run build && npm run ava && npm run lint",
     "typescript:modules": "tsc -p ./tsconfigs/modules.json",
     "typescript:commonjs": "tsc -p ./tsconfigs/commonjs.json",
     "typescript:test": "tsc -p ./tsconfigs/test.json"
   },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "build/test/**/*"
+    ]
+  },
   "devDependencies": {
     "@types/express": "^4.11.1",
+    "@types/fs-extra": "^5.0.1",
     "@types/puppeteer": "^1.0.0",
     "@types/sinon": "^4.1.3",
-    "@types/fs-extra": "^5.0.1",
     "ava": "^0.25.0",
+    "coveralls": "^3.0.0",
     "express": "^4.16.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
