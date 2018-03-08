@@ -20,7 +20,7 @@ async function setupServer() {
 }
 
 async function setupPuppeteer() {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({args: ['--no-sandbox']});
   page = await browser.newPage();
 }
 
