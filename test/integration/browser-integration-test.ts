@@ -51,6 +51,7 @@ test.serial('should log in browser', async (t) => {
     });
   });
 
+  console.log(serverAddress);
   const response = await page.goto(`${serverAddress}/build/test/static/logger-integration/`);
   t.deepEqual(response.status(), 200);
 
