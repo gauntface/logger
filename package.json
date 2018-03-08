@@ -57,7 +57,7 @@
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
   "license": "Apache-2.0",
-  "main": "./dist/commonjs/node/Logger.js",
-  "browser": "./dist/iife/browser/Logger.js",
+  "main": "./dist/commonjs/node/index.js",
+  "browser": "./dist/iife/browser/index.js",
   "version": "0.0.1"
 }

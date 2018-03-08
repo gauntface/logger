@@ -2,7 +2,7 @@ import {AbstractLogger, LoggerOpts} from '../interfaces/AbstractLogger';
 import * as LogLevels from '../types/LogLevels';
 import * as LogColors from '../types/LogColors';
 
-export class Logger extends AbstractLogger {
+export class BrowserLogger extends AbstractLogger {
   protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string[] {
     const prefixStyles = this.getLevelCSS(logLevel);
     if (prefixStyles) {

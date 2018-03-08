@@ -9,7 +9,7 @@ async function bundleBrowserModules() {
   const modulesDir = path.join(global.__buildConfig.dest, 'modules', 'browser');
   const browserDir = path.join(global.__buildConfig.dest, 'iife', 'browser');
 
-  await moduleToBundle(modulesDir, browserDir);
+  await moduleToBundle(path.join(modulesDir, 'index.js'), browserDir);
 }
 
 async function build() {

@@ -9,8 +9,6 @@ const sourcemapPlugin = require('rollup-plugin-sourcemaps');
 const esMinify = require('uglify-es').minify;
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
-const util = require('util');
-const glob = util.promisify(require('glob'));
 
 function processScript(moduleFile, relativePath, destDir) {
   return rollupStream({
@@ -39,27 +37,13 @@ function processScript(moduleFile, relativePath, destDir) {
   .pipe(gulp.dest(destDir));
 };
 
-async function moduleToBundle(modulesDir, bundleDir) {
-  await fs.remove(bundleDir);
-
-  const moduleFiles = await glob('**/*.js', {
-    cwd: modulesDir,
-    absolute: true,
-  });
-
-  if (moduleFiles.length === 0) {
-    return;
-  }
-
-  const buildFunctions = moduleFiles.map((moduleFile) => {
-    const relativePath = path.relative(path.normalize(modulesDir), moduleFile);
-    const cb = () => processScript(moduleFile, relativePath, bundleDir);
-    cb.displayName = `moduleToBundle: ${relativePath}`;
-    return cb;
-  });
+async function moduleToBundle(moduleFile, bundleDir) {
+  const relativePath = path.relative(path.dirname(moduleFile), moduleFile);
+  const cb = () => processScript(moduleFile, relativePath, bundleDir);
+  cb.displayName = `moduleToBundle: ${relativePath}`;
 
   return new Promise((resolve) => {
-    gulp.parallel(buildFunctions)(resolve);
+    gulp.series(cb)(resolve);
   });
 };
 

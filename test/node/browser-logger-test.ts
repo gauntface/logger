@@ -1,7 +1,7 @@
 import {test} from 'ava';
 import * as sinon from 'sinon';
 
-import {Logger} from '../../src/browser/Logger';
+import {BrowserLogger as Logger} from '../../src/browser/BrowserLogger';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.sandbox.create();

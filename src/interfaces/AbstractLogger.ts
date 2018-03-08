@@ -9,6 +9,7 @@ export abstract class AbstractLogger {
 
   constructor(opts?: LoggerOpts) {
     this.opts = opts || {};
+    // TODO: Require opts.prefix
   }
 
   // tslint:disable-next-line:no-any

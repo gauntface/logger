@@ -4,7 +4,7 @@ import {AbstractLogger, LoggerOpts} from '../interfaces/AbstractLogger';
 import * as LogLevels from '../types/LogLevels';
 import * as LogColors from '../types/LogColors';
 
-export class Logger extends AbstractLogger {
+export class NodeLogger extends AbstractLogger {
   protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string[] {
     const colorFunc = this.getChalkColor(logLevel);
     if (colorFunc) {

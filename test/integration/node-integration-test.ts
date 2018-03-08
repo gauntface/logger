@@ -12,7 +12,7 @@ function getPackage() {
 
 test.serial('should be able to require main from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.main, './dist/commonjs/node/Logger.js');
+  t.deepEqual(pkg.main, './dist/commonjs/node/index.js');
 
   const nodePath = path.join(rootDir, pkg.main);
   const {Logger} = require(nodePath);
@@ -44,7 +44,7 @@ test.serial('should be able to require main from package.json', async (t) => {
 
 test.serial('should be able to find browser from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.browser, './dist/iife/browser/Logger.js');
+  t.deepEqual(pkg.browser, './dist/iife/browser/index.js');
 
   const browserPath = path.join(rootDir, pkg.browser);
   await fs.access(browserPath);

@@ -2,7 +2,7 @@ import {test} from 'ava';
 import * as chalk from 'chalk';
 import * as sinon from 'sinon';
 
-import {Logger} from '../../src/node/Logger';
+import {NodeLogger as Logger} from '../../src/node/NodeLogger';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.sandbox.create();
