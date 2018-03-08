@@ -14,7 +14,7 @@ export class Logger extends AbstractLogger {
 
   private getLevelCSS(logLevel: LogLevels.LogLevel): string | null {
     function getStyles(color: string): string {
-      return `background: ${color}; color: white; padding: 2px 0.5em; border-radis: 0.5em`;
+      return `background: ${color}; color: white; padding: 2px 0.5em; border-radius: 0.5em`;
     }
 
     switch(logLevel) {

@@ -1,4 +1,4 @@
-export const DEBUG = '#f5f6fa';
+export const DEBUG = '#bdc3c7';
 export const INFO = '#487eb0';
 export const LOG = '#4cd137';
 export const WARN = '#e1b12c';

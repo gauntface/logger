@@ -12,7 +12,6 @@ export class TestServer {
 
   constructor(filePath: string) {
     this.app = express();
-    console.log(filePath);
     this.app.use(express.static(filePath));
   }
 

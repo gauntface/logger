@@ -35,7 +35,7 @@ test.serial('should print debug with prefix', (t) => {
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #f5f6fa; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #bdc3c7; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
 });
 
 test.serial('should print info without prefix', (t) => {
@@ -62,7 +62,7 @@ test.serial('should print info with prefix', (t) => {
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #487eb0; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #487eb0; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
 });
 
 test.serial('should print log without prefix', (t) => {
@@ -89,7 +89,7 @@ test.serial('should print log with prefix', (t) => {
   logger.log(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #4cd137; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
 });
 
 test.serial('should print warn without prefix', (t) => {
@@ -116,7 +116,7 @@ test.serial('should print warn with prefix', (t) => {
   logger.warn(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e1b12c; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e1b12c; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
 });
 
 test.serial('should print error without prefix', (t) => {
@@ -143,7 +143,7 @@ test.serial('should print error with prefix', (t) => {
   logger.error(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e74c3c; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e74c3c; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
 });
 
 test.serial('should print group without prefix', (t) => {
@@ -183,7 +183,7 @@ test.serial('should print group with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
   t.deepEqual(logEndSpy.callCount, 2);
 });
 
@@ -224,6 +224,6 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radis: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
   t.deepEqual(logEndSpy.callCount, 2);
 });
