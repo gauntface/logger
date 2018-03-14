@@ -2,6 +2,7 @@
   "scripts": {
     "ava": "nyc ava ./build/test/{node,integration}/**/*.js",
     "build": "gulp build",
+    "docs": "typedoc ./src/**/*.ts --out ./docs/ --mode file --excludePrivate --excludeProtected --module umd --ignoreCompilerErrors",
     "lint": "tslint 'src/**/*'",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run build && npm run ava && npm run lint",
@@ -42,6 +43,7 @@
     "rollup-stream": "^1.24.1",
     "sinon": "^4.4.2",
     "tslint": "^5.9.1",
+    "typedoc": "^0.11.1",
     "typescript": "^2.7.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"

@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>hopin-logger</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/hopin-logger@0.0.1/dist/iife/browser/index.js"></script>
+    <script>
+    const factory = hopin.logger.factory
+    const logger = factory.getLogger('example-project', {
+      prefix: 'Example',
+    });
+
+    logger.debug('Doing some debugging?');
+    logger.info('I hope to provide info');
+    logger.log('I\'m a friendly log.');
+    logger.warn('Oops, I\'m an warning.');
+    logger.error('Eek! I\'m an error.');
+
+    logger.group('I can group logs together.');
+    logger.log('Message in a group....');
+    logger.log('....awesome sauce.');
+    logger.groupEnd();
+    </script>
+  </body>
+</html>
