@@ -1,5 +1,5 @@
-import { LoggerOpts } from "../interfaces/AbstractLogger";
-import { AbstractLoggerFactory } from "../interfaces/AbstractLoggerFactory";
+import { LoggerOpts } from "../shared/AbstractLogger";
+import { LoggerFactory } from "../shared/LoggerFactory";
 import { BrowserLogger } from './BrowserLogger';
 
-export const browserFactory = new AbstractLoggerFactory<BrowserLogger>(BrowserLogger);
+export const browserFactory = new LoggerFactory<BrowserLogger>(BrowserLogger);

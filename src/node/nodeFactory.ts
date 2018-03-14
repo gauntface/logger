@@ -1,5 +1,5 @@
-import { LoggerOpts } from "../interfaces/AbstractLogger";
-import { AbstractLoggerFactory } from "../interfaces/AbstractLoggerFactory";
+import { LoggerOpts } from "../shared/AbstractLogger";
+import { LoggerFactory } from "../shared/LoggerFactory";
 import { NodeLogger } from "./NodeLogger";
 
-export const nodeFactory = new AbstractLoggerFactory<NodeLogger>(NodeLogger);
+export const nodeFactory = new LoggerFactory<NodeLogger>(NodeLogger);

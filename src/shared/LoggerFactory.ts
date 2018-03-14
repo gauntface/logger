@@ -1,6 +1,6 @@
-import { AbstractLogger, LoggerOpts } from "../interfaces/AbstractLogger";
+import { AbstractLogger, LoggerOpts } from "../shared/AbstractLogger";
 
-export class AbstractLoggerFactory<T extends AbstractLogger> {
+export class LoggerFactory<T extends AbstractLogger> {
   private type: { new(opts?: LoggerOpts): T ;};
   private loggers: {[loggerName: string]: T};
 
