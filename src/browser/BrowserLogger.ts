@@ -1,15 +1,11 @@
-import {AbstractLogger, LoggerOpts} from '../interfaces/AbstractLogger';
+import {AbstractLogger, LoggerOpts} from '../shared/AbstractLogger';
 import * as LogLevels from '../types/LogLevels';
 import * as LogColors from '../types/LogColors';
 
 export class BrowserLogger extends AbstractLogger {
   protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string[] {
     const prefixStyles = this.getLevelCSS(logLevel);
-    if (prefixStyles) {
-      return [`%c${prefix}`, prefixStyles];
-    } else {
-      return [prefix];
-    }
+    return [`%c${prefix}`, prefixStyles];
   }
 
   private getLevelCSS(logLevel: LogLevels.LogLevel): string | null {
@@ -22,16 +18,15 @@ export class BrowserLogger extends AbstractLogger {
         return getStyles(LogColors.DEBUG);
       case LogLevels.INFO:
         return getStyles(LogColors.INFO);
-      case LogLevels.LOG:
-        return getStyles(LogColors.LOG);
       case LogLevels.WARN:
         return getStyles(LogColors.WARN);
       case LogLevels.ERROR:
         return getStyles(LogColors.ERROR);
       case LogLevels.GROUP:
         return getStyles(LogColors.GROUP);
+      case LogLevels.LOG:
       default:
-        return null;
+        return getStyles(LogColors.LOG);
     }
   }
 }
