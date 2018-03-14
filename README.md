@@ -46,7 +46,7 @@ logger.groupEnd();
 
 ## Usage in Node
 
-```html
+```javascript
 const {factory} = require('hopin-logger');
 
 const logger = factory.getLogger('example-project', {
