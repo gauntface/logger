@@ -17,9 +17,13 @@ colored and prefixed logs to a module or project.
 <img alt="Jake Rainbow" src="https://media.giphy.com/media/QrV1C9kNmsacg/giphy.gif" />
 </p>
 
+<p align="center">
 The module has identical API's that run in the browser and Node 8+.
+</p>
 
-![Screenshot of hopin-logger demos in Node and Browser](https://raw.githubusercontent.com/gauntface/hopin-logger/master/demo/hopin-logger-screenshots.png)
+<p align="center">
+<img a;t="Screenshot of hopin-logger demos in Node and Browser" src="https://raw.githubusercontent.com/gauntface/hopin-logger/master/demo/hopin-logger-screenshots.png" />
+</p>
 
 ## Usage in Browser
 
