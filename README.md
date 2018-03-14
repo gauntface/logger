@@ -8,10 +8,14 @@
   <a href="https://david-dm.org/gauntface/hopin-logger?type=peer" title="peerDependencies status"><img src="https://david-dm.org/gauntface/hopin-logger/peer-status.svg"/></a>
 </p>
 
+<p align="center">
 `hopin-logger` is a simply and small library aimed at making it easy to add
 colored and prefixed logs to a module or project.
+</p>
 
-![Jake Rainbow](https://media.giphy.com/media/QrV1C9kNmsacg/giphy.gif)
+<p align="center">
+<img alt="Jake Rainbow" src="https://media.giphy.com/media/QrV1C9kNmsacg/giphy.gif" />
+</p>
 
 The module has identical API's that run in the browser and Node 8+.
 
