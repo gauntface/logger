@@ -8,14 +8,18 @@
   <a href="https://david-dm.org/gauntface/hopin-logger?type=peer" title="peerDependencies status"><img src="https://david-dm.org/gauntface/hopin-logger/peer-status.svg"/></a>
 </p>
 
+<p align="center">
 `hopin-logger` is a simply and small library aimed at making it easy to add
-colored and prefixed logs to a module or project.
+colored and prefixed logs to a project in both Node 8+ and the browser.
+</p>
 
-![Jake Rainbow](https://media.giphy.com/media/QrV1C9kNmsacg/giphy.gif)
+<p align="center">
+<img a;t="Screenshot of hopin-logger demos in Node and Browser" src="https://raw.githubusercontent.com/gauntface/hopin-logger/master/demo/hopin-logger-screenshots.png" />
+</p>
 
-The module has identical API's that run in the browser and Node 8+.
-
-![Screenshot of hopin-logger demos in Node and Browser](https://raw.githubusercontent.com/gauntface/hopin-logger/master/demo/hopin-logger-screenshots.png)
+<p align="center">
+<img alt="Jake Rainbow" src="https://media.giphy.com/media/QrV1C9kNmsacg/giphy.gif" />
+</p>
 
 ## Usage in Browser
 
@@ -42,7 +46,7 @@ logger.groupEnd();
 
 ## Usage in Node
 
-```html
+```javascript
 const {factory} = require('hopin-logger');
 
 const logger = factory.getLogger('example-project', {
