@@ -14,11 +14,7 @@ export abstract class AbstractLogger {
 
   // tslint:disable-next-line:no-any
   debug(...args: any[]) {
-    let consoleFunc = console.debug;
-    if (!consoleFunc) {
-      consoleFunc = console.info;
-    }
-    this.print(consoleFunc, LogLevels.DEBUG, args);
+    this.print(console.debug, LogLevels.DEBUG, args);
   }
 
   // tslint:disable-next-line:no-any

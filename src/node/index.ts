@@ -1,7 +1,5 @@
 import {NodeLogger} from './NodeLogger';
-import {NodeLoggerFactory} from './NodeLoggerFactory';
-import {getNodeLogger} from './getNodeLogger';
+import {nodeFactory} from './nodeFactory';
 
-export {getNodeLogger as getLogger};
 export {NodeLogger as Logger};
-export {NodeLoggerFactory as LoggerFactory};
+export {nodeFactory as factory};

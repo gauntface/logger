@@ -1,10 +1,6 @@
 import { AbstractLogger, LoggerOpts } from "../interfaces/AbstractLogger";
 
-export interface FactoryOpts {
-  forceNew?: boolean;
-}
-
-export abstract class AbstractLoggerFactory<T extends AbstractLogger> {
+export class AbstractLoggerFactory<T extends AbstractLogger> {
   private type: { new(opts?: LoggerOpts): T ;};
   private loggers: {[loggerName: string]: T};
 
@@ -13,16 +9,18 @@ export abstract class AbstractLoggerFactory<T extends AbstractLogger> {
     this.loggers = {};
   }
 
-  getLogger(id: string, prefix: string, opts?: FactoryOpts): T {
-    // TODO: Same id, diff, options - what to do?
-    // TODO: Reserve __hopin__ IDs
-    // TODO: Implement forceNew
-
+  getLogger(id: string, opts?: LoggerOpts): T {
     if (!this.loggers[id]) {
-      const newLogger = new this.type({prefix});
+      const newLogger = new this.type(opts);
       this.loggers[id] = newLogger;
     }
 
     return this.loggers[id];
+  }
+
+  clearLogger(id: string) {
+    if(this.loggers[id]) {
+      delete this.loggers[id];
+    }
   }
 }
