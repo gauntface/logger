@@ -74,5 +74,5 @@
   "main": "./dist/commonjs/node/index.js",
   "types": "./dist/commonjs/node/index.d.ts",
   "browser": "./dist/iife/browser/index.js",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
