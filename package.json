@@ -37,7 +37,7 @@
     "gulp-typescript": "4.0.1",
     "nyc": "11.6.0",
     "puppeteer": "1.2.0",
-    "rollup": "0.56.5",
+    "rollup": "0.57.1",
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-uglify": "3.0.0",
     "rollup-stream": "1.24.1",
