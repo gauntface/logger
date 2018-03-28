@@ -6,8 +6,8 @@
     "lint": "tslint 'src/**/*'",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run build && npm run ava && npm run lint",
-    "typescript:modules": "tsc -p ./tsconfigs/modules.json",
-    "typescript:commonjs": "tsc -p ./tsconfigs/commonjs.json",
+    "typescript:modules": "tsc -p ./tsconfigs/modules.json --declaration",
+    "typescript:commonjs": "tsc -p ./tsconfigs/commonjs.json --declaration",
     "typescript:test": "tsc -p ./tsconfigs/test.json",
     "version": "echo 'TODO: ./build-docs && git add docs'"
   },
@@ -30,7 +30,6 @@
     "express": "4.16.3",
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
-    "gts": "0.5.3",
     "gulp": "4.0.0",
     "gulp-rename": "1.2.2",
     "gulp-sourcemaps": "2.6.4",
@@ -68,11 +67,12 @@
   "bugs": {
     "url": "https://github.com/gauntface/hopin-logger/issues"
   },
-  "name": "hopin-logger",
+  "name": "@hopin/logger",
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
   "license": "Apache-2.0",
   "main": "./dist/commonjs/node/index.js",
+  "types": "./dist/commonjs/node/index.d.ts",
   "browser": "./dist/iife/browser/index.js",
   "version": "0.0.1"
 }
