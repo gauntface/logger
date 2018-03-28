@@ -1,4 +1,7 @@
 {
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "ava": "nyc ava ./build/test/{node,integration}/**/*.js",
     "build": "gulp build",
