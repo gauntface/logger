@@ -30,7 +30,7 @@
     "express": "4.16.3",
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
-    "gts": "0.5.3",
+    "gts": "0.5.4",
     "gulp": "4.0.0",
     "gulp-rename": "1.2.2",
     "gulp-sourcemaps": "2.6.4",
