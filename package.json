@@ -46,7 +46,7 @@
     "sinon": "5.0.10",
     "tslint": "5.10.0",
     "typedoc": "0.11.1",
-    "typescript": "2.8.4",
+    "typescript": "2.9.1",
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0"
   },
