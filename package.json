@@ -37,7 +37,7 @@
     "gulp-rename": "1.2.3",
     "gulp-sourcemaps": "2.6.4",
     "gulp-typescript": "4.0.2",
-    "nyc": "12.0.1",
+    "nyc": "12.0.2",
     "puppeteer": "1.4.0",
     "rollup": "0.59.4",
     "rollup-plugin-sourcemaps": "0.4.2",
