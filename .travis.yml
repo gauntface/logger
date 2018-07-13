@@ -3,9 +3,10 @@ cache:
   directories:
     - "node_modules"
 
+# See: https://github.com/nodejs/Release
 node_js:
+  - "node" # Latest node version
   - "8"
-  - "9"
 
 before_script:
   - "export DISPLAY=:99.0"

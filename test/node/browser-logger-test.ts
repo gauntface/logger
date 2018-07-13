@@ -4,7 +4,7 @@ import * as sinon from 'sinon';
 import {BrowserLogger as Logger} from '../../src/browser/BrowserLogger';
 
 test.beforeEach((t) => {
-  t.context.sandbox = sinon.sandbox.create();
+  t.context.sandbox = sinon.createSandbox();
 });
 
 test.afterEach.always((t) => {

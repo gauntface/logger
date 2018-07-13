@@ -5,7 +5,7 @@ import * as sinon from 'sinon';
 import {NodeLogger as Logger} from '../../src/node/NodeLogger';
 
 test.beforeEach((t) => {
-  t.context.sandbox = sinon.sandbox.create();
+  t.context.sandbox = sinon.createSandbox();
 });
 
 test.afterEach.always((t) => {

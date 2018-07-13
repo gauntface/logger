@@ -4,9 +4,8 @@ const fs = require('fs-extra');
 const sourcemaps = require('gulp-sourcemaps');
 const rollup = require('rollup');
 const rollupStream = require('rollup-stream');
-const uglifyPlugin = require('rollup-plugin-uglify');
 const sourcemapPlugin = require('rollup-plugin-sourcemaps');
-const esMinify = require('uglify-es').minify;
+const {terser} = require('rollup-plugin-terser');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 
@@ -25,7 +24,7 @@ function processScript(moduleFile, relativePath, destDir) {
       // further manipulations
       sourcemapPlugin(),
       // Minify the bundled JS
-      uglifyPlugin({}, esMinify),
+      terser(),
     ],
   })
   .pipe(source(relativePath))
