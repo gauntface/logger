@@ -6,7 +6,7 @@ import {BrowserLogger} from '../../src/browser/BrowserLogger';
 const LOGGER_ID = 'test-logger-id';
 
 test.beforeEach((t) => {
-  t.context.sandbox = sinon.sandbox.create();
+  t.context.sandbox = sinon.createSandbox();
   browserFactory.clearLogger(LOGGER_ID);
 });
 

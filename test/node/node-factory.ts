@@ -6,7 +6,7 @@ import {NodeLogger} from '../../src/node/NodeLogger';
 const LOGGER_ID = 'test-logger-id';
 
 test.beforeEach((t) => {
-  t.context.sandbox = sinon.sandbox.create();
+  t.context.sandbox = sinon.createSandbox();
   nodeFactory.clearLogger(LOGGER_ID);
 });
 
