@@ -24,6 +24,10 @@ export class TestServer {
     return new Promise((resolve) => {
       this.server = this.app.listen(port, () => {
         const addr = this.server.address();
+        if (typeof addr === 'string') {
+          resolve(addr);
+          return;
+        }
         let host = addr.address;
         if (addr.family === 'IPv6') {
           // host = `[${host}]`;
