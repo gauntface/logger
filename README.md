@@ -1,4 +1,4 @@
-<h1  align="center">hopin-logger</h1>
+<h1  align="center">@hopin/logger</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/gauntface/hopin-logger"><img src="https://travis-ci.org/gauntface/hopin-logger.svg?branch=master" alt="Travis Build Status" /></a>
@@ -24,7 +24,7 @@ colored and prefixed logs to a project in both Node 8+ and the browser.
 ## Usage in Browser
 
 ```html
-<script src="https://unpkg.com/hopin-logger@0.0.1/dist/iife/browser/browser.js"></script>
+<script src="https://unpkg.com/@hopin/logger@0.0.5/dist/iife/browser/browser.js"></script>
 <script>
 hopin.logger.setPrefix('Example');
 
@@ -44,7 +44,7 @@ hopin.logger.groupEnd();
 For multiple loggers with seperate prefixes:
 
 ```html
-<script src="https://unpkg.com/hopin-logger@0.0.1/dist/iife/browser/browser.js"></script>
+<script src="https://unpkg.com/@hopin/logger@0.0.5/dist/iife/browser/browser.js"></script>
 <script>
 const example1Logger = new hopin.logger.Logger({
   prefix: 'Example 1',
@@ -61,7 +61,7 @@ example2Logger.log('Oh Hai!');
 ## Usage in Node
 
 ```javascript
-const {logger} = require('hopin-logger');
+const {logger} = require('@hopin/logger');
 
 logger.setPrefix('Example');
 
@@ -80,7 +80,7 @@ logger.groupEnd();
 For multiple loggers with seperate prefixes:
 
 ```javascript
-const {Logger} = require('hopin-logger');
+const {Logger} = require('@hopin/logger');
 
 const example1Logger = new Logger({
   prefix: 'Example 1',
