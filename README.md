@@ -24,7 +24,7 @@ colored and prefixed logs to a project in both Node 8+ and the browser.
 ## Usage in Browser
 
 ```html
-<script src="https://unpkg.com/hopin-logger@0.0.1/dist/iife/browser/index.js"></script>
+<script src="https://unpkg.com/@hopin/logger@0.0.4/dist/iife/browser/index.js"></script>
 <script>
 const factory = hopin.logger.factory
 const logger = factory.getLogger('example-project', {
@@ -47,7 +47,7 @@ logger.groupEnd();
 ## Usage in Node
 
 ```javascript
-const {factory} = require('hopin-logger');
+const {factory} = require('@hopin/logger');
 
 const logger = factory.getLogger('example-project', {
   prefix: 'Example',
