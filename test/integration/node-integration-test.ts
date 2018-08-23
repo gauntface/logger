@@ -74,7 +74,7 @@ test.serial('should be able to require logger from package.json', async (t) => {
 
 test.serial('should be able to find browser from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.browser, './dist/iife/browser/index.js');
+  t.deepEqual(pkg.browser, './dist/iife/browser/browser.js');
 
   const browserPath = path.join(rootDir, pkg.browser);
   await fs.access(browserPath);
