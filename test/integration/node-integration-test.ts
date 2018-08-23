@@ -6,11 +6,10 @@ import * as fs from 'fs-extra';
 const rootDir = path.join(__dirname, '..', '..', '..');
 
 function getPackage() {
-
   return fs.readJson(path.join(rootDir, 'package.json'));
 }
 
-test.serial('should be able to require main from package.json', async (t) => {
+test.serial('should be able to require Logger from package.json', async (t) => {
   const pkg = await getPackage();
   t.deepEqual(pkg.main, './dist/commonjs/node/index.js');
 
@@ -40,6 +39,37 @@ test.serial('should be able to require main from package.json', async (t) => {
   instance.log('hello, log group 2');
   instance.groupEnd();
   instance.groupEnd();
+});
+
+test.serial('should be able to require logger from package.json', async (t) => {
+  const pkg = await getPackage();
+  t.deepEqual(pkg.main, './dist/commonjs/node/index.js');
+
+  const nodePath = path.join(rootDir, pkg.main);
+  const {logger} = require(nodePath);
+  t.truthy(logger);
+
+  logger.setPrefix('hopin-logger-test');
+
+  logger.debug('hello, debug');
+  logger.info('hello, info');
+  logger.log('hello, log');
+  logger.warn('hello, warn');
+  logger.error('hello, error');
+
+  logger.group('hello, group 1');
+  logger.log('hello, log group 1');
+  logger.group('hello, group 2');
+  logger.log('hello, log group 2');
+  logger.groupEnd();
+  logger.groupEnd();
+
+  logger.groupCollapsed('hello, groupCollapsed 1');
+  logger.log('hello, log group 1');
+  logger.groupCollapsed('hello, groupCollapsed 2');
+  logger.log('hello, log group 2');
+  logger.groupEnd();
+  logger.groupEnd();
 });
 
 test.serial('should be able to find browser from package.json', async (t) => {

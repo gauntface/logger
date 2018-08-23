@@ -76,6 +76,6 @@
   "license": "Apache-2.0",
   "main": "./dist/commonjs/node/index.js",
   "types": "./dist/commonjs/node/index.d.ts",
-  "browser": "./dist/iife/browser/index.js",
+  "browser": "./dist/iife/browser/browser.js",
   "version": "0.0.4"
 }

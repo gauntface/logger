@@ -17,7 +17,7 @@ function processScript(moduleFile, relativePath, destDir) {
       format: 'iife',
       sourcemap: true,
       name: path.basename(moduleFile),
-      name: 'hopin.logger',
+      name: 'hopin',
     },
     plugins: [
       // This module enabled Rollup to *ingest* a sourcemap to apply
