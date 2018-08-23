@@ -73,7 +73,7 @@
   "name": "@hopin/logger",
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "main": "./dist/commonjs/node/index.js",
   "types": "./dist/commonjs/node/index.d.ts",
   "browser": "./dist/iife/browser/browser.js",
