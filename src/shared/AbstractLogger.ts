@@ -5,11 +5,14 @@ export type LoggerOpts = {
 };
 
 export abstract class AbstractLogger {
-  protected opts: LoggerOpts;
+  private opts: LoggerOpts;
 
   constructor(opts?: LoggerOpts) {
     this.opts = opts || {};
-    // TODO: Require opts.prefix
+  }
+
+  setPrefix(prefix: string) {
+    this.opts.prefix = prefix;
   }
 
   // tslint:disable-next-line:no-any
