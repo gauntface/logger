@@ -6,21 +6,18 @@
   <body>
     <script src="https://unpkg.com/hopin-logger@0.0.1/dist/iife/browser/index.js"></script>
     <script>
-    const factory = hopin.logger.factory
-    const logger = factory.getLogger('example-project', {
-      prefix: 'Example',
-    });
+    hopin.logger.setPrefix('Example');
 
-    logger.debug('Doing some debugging?');
-    logger.info('I hope to provide info');
-    logger.log('I\'m a friendly log.');
-    logger.warn('Oops, I\'m an warning.');
-    logger.error('Eek! I\'m an error.');
+    hopin.logger.debug('Doing some debugging?');
+    hopin.logger.info('I hope to provide info');
+    hopin.logger.log('I\'m a friendly log.');
+    hopin.logger.warn('Oops, I\'m an warning.');
+    hopin.logger.error('Eek! I\'m an error.');
 
-    logger.group('I can group logs together.');
-    logger.log('Message in a group....');
-    logger.log('....awesome sauce.');
-    logger.groupEnd();
+    hopin.logger.group('I can group logs together.');
+    hopin.logger.log('Message in a group....');
+    hopin.logger.log('....awesome sauce.');
+    hopin.logger.groupEnd();
     </script>
   </body>
 </html>

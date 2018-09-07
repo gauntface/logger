@@ -1,8 +1,6 @@
-const {factory} = require('hopin-logger');
+const {logger} = require('hopin-logger');
 
-const logger = factory.getLogger('example-project', {
-  prefix: 'Example',
-});
+logger.setPrefix('Example');
 
 logger.debug('Doing some debugging?');
 logger.info('I hope to provide info');

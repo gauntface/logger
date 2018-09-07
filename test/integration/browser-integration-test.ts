@@ -3,6 +3,7 @@ import {test} from 'ava';
 import * as puppeteer from 'puppeteer';
 
 import {TestServer} from '../utils/TestServer';
+import * as LogColors from '../../src/types/LogColors';
 
 let server: TestServer;
 let serverAddress: string;
@@ -58,7 +59,7 @@ test.serial('should log in browser', async (t) => {
 
   t.deepEqual(messageData[0], {
     type: 'debug',
-    text: '%chopin-custom-logger-test background: #bdc3c7; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug',
+    text: `%chopin-custom-logger-test background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
   });
 
   t.deepEqual(messageData[1], {
@@ -143,7 +144,7 @@ test.serial('should log in browser', async (t) => {
 
   t.deepEqual(messageData[17], {
     type: 'debug',
-    text: '%chopin-default-logger-test background: #bdc3c7; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug',
+    text: `%chopin-default-logger-test background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
   });
 
   t.deepEqual(messageData[18], {

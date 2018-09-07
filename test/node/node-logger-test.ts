@@ -2,6 +2,7 @@ import {test} from 'ava';
 import * as chalk from 'chalk';
 import * as sinon from 'sinon';
 
+import * as LogLevels from '../../src/types/LogLevels';
 import {NodeLogger as Logger} from '../../src/node/NodeLogger';
 
 test.beforeEach((t) => {
@@ -12,12 +13,24 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
+test.serial('should not print debug by default', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'debug');
+
+  const MSG = 'hello, debug';
+
+  const logger = new Logger();
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 0);
+});
+
 test.serial('should print debug without prefix', (t) => {
   const logSpy = t.context.sandbox.spy(console, 'debug');
 
   const MSG = 'hello, debug';
 
   const logger = new Logger();
+  logger.setLogLevel(LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -33,11 +46,23 @@ test.serial('should print debug with prefix', (t) => {
   const logger = new Logger({
     prefix: PREFIX
   });
+  logger.setLogLevel(LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
   t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
   t.deepEqual(logSpy.getCall(0).args[1], MSG);
+});
+
+test.serial('should not print info by default', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'info');
+
+  const MSG = 'hello, info';
+
+  const logger = new Logger();
+  logger.info(MSG);
+
+  t.deepEqual(logSpy.callCount, 0);
 });
 
 test.serial('should print info without prefix', (t) => {
@@ -46,6 +71,7 @@ test.serial('should print info without prefix', (t) => {
   const MSG = 'hello, info';
 
   const logger = new Logger();
+  logger.setLogLevel(LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -61,6 +87,7 @@ test.serial('should print info with prefix', (t) => {
   const logger = new Logger({
     prefix: PREFIX
   });
+  logger.setLogLevel(LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);

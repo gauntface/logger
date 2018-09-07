@@ -27,4 +27,8 @@ export class NodeLogger extends AbstractLogger {
         return chalk.hex(LogColors.LOG);
     }
   }
+
+  protected getDefaultLogLevel(): LogLevels.LogLevel {
+    return LogLevels.LOG;
+  }
 }

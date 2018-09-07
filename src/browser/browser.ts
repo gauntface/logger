@@ -1,15 +1,10 @@
 import {BrowserLogger} from './BrowserLogger';
-import {browserFactory} from './browserFactory';
 
 // This class exists solely so the default export is the logger
-// with log methods while making the underlying logger and factory available.
+// with log methods while making the underlying logger available.
 class BrowserNamespace extends BrowserLogger {
   get Logger() {
     return BrowserLogger;
-  }
-
-  get factory() {
-    return browserFactory;
   }
 }
 
