@@ -2,6 +2,7 @@ import {test} from 'ava';
 import * as sinon from 'sinon';
 
 import {BrowserLogger as Logger} from '../../src/browser/BrowserLogger';
+import * as LogColors from '../../src/types/LogColors';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -35,7 +36,7 @@ test.serial('should print debug with prefix', (t) => {
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #bdc3c7; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, `background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em`, MSG]);
 });
 
 test.serial('should print info without prefix', (t) => {

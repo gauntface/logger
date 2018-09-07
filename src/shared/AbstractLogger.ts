@@ -6,13 +6,19 @@ export type LoggerOpts = {
 
 export abstract class AbstractLogger {
   private opts: LoggerOpts;
+  private currentLogLevel: LogLevels.LogLevel;
 
   constructor(opts?: LoggerOpts) {
     this.opts = opts || {};
+    this.currentLogLevel = this.getDefaultLogLevel();
   }
 
   setPrefix(prefix: string) {
     this.opts.prefix = prefix;
+  }
+
+  setLogLevel(logLevel: LogLevels.LogLevel) {
+    this.currentLogLevel = logLevel;
   }
 
   // tslint:disable-next-line:no-any
@@ -56,6 +62,10 @@ export abstract class AbstractLogger {
 
   // tslint:disable-next-line:no-any
   private print(consoleFunc: Function, logLevel: LogLevels.LogLevel, args: any[]) {
+    if (this.currentLogLevel > logLevel) {
+      return;
+    }
+
     consoleFunc(...this.getArgs(logLevel, args));
   }
 
@@ -72,6 +82,10 @@ export abstract class AbstractLogger {
     if (this.opts.prefix) {
       return this.colorPrefix(logLevel, this.opts.prefix);
     }
+  }
+
+  protected getDefaultLogLevel(): LogLevels.LogLevel {
+    return LogLevels.DEBUG;
   }
 
   protected abstract colorPrefix(level: LogLevels.LogLevel, prefix: string): string[];
