@@ -25,10 +25,11 @@ gulp.task('clean',
 gulp.task('build',
   gulp.series(
     'clean',
-    gulp.parallel(
-      tsNode.gulpBuild({src: 'node', dst: buildNodeDir, rootDir: 'src'}),
-      tsNode.gulpBuild({dst: buildTestDir, rootDir: 'src'}),
-      tsBrowser.gulpBuild('hopin', {src: 'browser', dst: buildBrowserDir, rootDir: 'src'}),
-    )
+    // Node build
+    tsNode.gulpBuild({src: 'node', dst: buildNodeDir, rootDir: 'src'}),
+    // Browser build
+    tsBrowser.gulpBuild('hopin', {src: 'browser', dst: buildBrowserDir, rootDir: 'src'}),
+    // Build all files for testing
+    tsNode.gulpBuild({dst: buildTestDir, rootDir: 'src'}),
   )
 );
