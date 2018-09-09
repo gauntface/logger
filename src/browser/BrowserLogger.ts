@@ -1,4 +1,4 @@
-import {AbstractLogger, LoggerOpts} from '../shared/AbstractLogger';
+import {AbstractLogger} from '../shared/AbstractLogger';
 import * as LogLevels from '../types/LogLevels';
 import * as LogColors from '../types/LogColors';
 

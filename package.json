@@ -3,12 +3,11 @@
     "access": "public"
   },
   "scripts": {
-    "ava": "nyc ava ./build/test/{node,integration}/**/*.js",
-    "build": "gulp build",
+    "ava": "nyc ava ./test/{node,integration}/**/*.js",
     "docs": "typedoc ./src/**/*.ts --out ./docs/ --mode file --excludePrivate --excludeProtected --module umd --ignoreCompilerErrors",
     "lint": "tslint 'src/**/*'",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "npm run build && npm run ava && npm run lint",
+    "test": "gulp build && npm run ava && npm run lint",
     "typescript:modules": "tsc -p ./tsconfigs/modules.json --declaration",
     "typescript:commonjs": "tsc -p ./tsconfigs/commonjs.json --declaration",
     "typescript:test": "tsc -p ./tsconfigs/test.json",
@@ -24,8 +23,8 @@
     ]
   },
   "devDependencies": {
-    "@hopin/wbt-ts-browser": "0.0.8",
-    "@hopin/wbt-ts-node": "0.0.8",
+    "@hopin/wbt-ts-browser": "0.0.12",
+    "@hopin/wbt-ts-node": "0.0.12",
     "@types/express": "4.16.0",
     "@types/fs-extra": "5.0.4",
     "@types/puppeteer": "1.6.3",
@@ -62,7 +61,8 @@
     "logger"
   ],
   "files": [
-    "dist/**/*"
+    "build-node/node/*",
+    "build-browser/browser/browser.js"
   ],
   "homepage": "https://github.com/gauntface/hopin-logger#readme",
   "repository": {
@@ -76,8 +76,8 @@
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
   "license": "MIT",
-  "main": "./build/node/index.js",
-  "types": "./build/node/index.d.ts",
-  "browser": "./build/browser/browser.js",
+  "main": "./build-node/node/index.js",
+  "types": "./build-node/node/index.d.ts",
+  "browser": "./build-browser/browser/browser.js",
   "version": "1.0.0"
 }
