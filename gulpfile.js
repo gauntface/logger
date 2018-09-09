@@ -1,15 +1,23 @@
 const gulp = require('gulp');
 const path = require('path');
+const {setConfig} = require('@hopin/wbt-config');
+const tsNode = require('@hopin/wbt-ts-node'); 
+const tsBrowser = require('@hopin/wbt-ts-browser'); 
 
 const getTaskFilepaths = require('./gulp-tasks/utils/get-task-filepaths');
 
-global.__buildConfig = {
+const src = path.join(__dirname, 'src');
+const dst = path.join(__dirname, 'build');
+
+setConfig(src, dst);
+
+/* global.__buildConfig = {
   src: path.join(__dirname, 'src'),
   dest: path.join(__dirname, 'dist'),
   temp: path.join(__dirname, 'build'),
-};
+};*/
 
-const loadTasks = () => {
+/* const loadTasks = () => {
   const taskFiles = getTaskFilepaths();
   for (const taskFilepath of taskFiles) {
     const {task} = require(taskFilepath);
@@ -33,4 +41,11 @@ gulp.task('prod', (done) => {
   return gulp.series([
     'build',
   ])(done);
-});
+});*/
+
+gulp.task('build',
+  gulp.series(
+    tsBrowser.gulpBuild('hopin', 'browser'),
+    tsNode.gulpBuild('node'),
+  )
+);

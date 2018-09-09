@@ -24,6 +24,8 @@
     ]
   },
   "devDependencies": {
+    "@hopin/wbt-ts-browser": "0.0.8",
+    "@hopin/wbt-ts-node": "0.0.8",
     "@types/express": "4.16.0",
     "@types/fs-extra": "5.0.4",
     "@types/puppeteer": "1.6.3",
@@ -74,8 +76,8 @@
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
   "license": "MIT",
-  "main": "./dist/commonjs/node/index.js",
-  "types": "./dist/commonjs/node/index.d.ts",
-  "browser": "./dist/iife/browser/browser.js",
+  "main": "./build/node/index.js",
+  "types": "./build/node/index.d.ts",
+  "browser": "./build/browser/browser.js",
   "version": "1.0.0"
 }

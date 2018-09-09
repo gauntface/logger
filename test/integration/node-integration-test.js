@@ -1,9 +1,9 @@
-import *  as path from 'path';
-import {test} from 'ava';
-import * as fs from 'fs-extra';
+const path = require('path');
+const {test} = require('ava');
+const fs = require('fs-extra');
 
 // Note this is from build/test/...
-const rootDir = path.join(__dirname, '..', '..', '..');
+const rootDir = path.join(__dirname, '..', '..');
 
 function getPackage() {
   return fs.readJson(path.join(rootDir, 'package.json'));
@@ -11,9 +11,8 @@ function getPackage() {
 
 test.serial('should be able to require Logger from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.main, './dist/commonjs/node/index.js');
-
   const nodePath = path.join(rootDir, pkg.main);
+  await fs.access(nodePath);
   const {Logger} = require(nodePath);
   t.truthy(Logger);
 
@@ -43,9 +42,8 @@ test.serial('should be able to require Logger from package.json', async (t) => {
 
 test.serial('should be able to require logger from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.main, './dist/commonjs/node/index.js');
-
   const nodePath = path.join(rootDir, pkg.main);
+  await fs.access(nodePath);
   const {logger} = require(nodePath);
   t.truthy(logger);
 
@@ -74,8 +72,8 @@ test.serial('should be able to require logger from package.json', async (t) => {
 
 test.serial('should be able to find browser from package.json', async (t) => {
   const pkg = await getPackage();
-  t.deepEqual(pkg.browser, './dist/iife/browser/browser.js');
 
   const browserPath = path.join(rootDir, pkg.browser);
   await fs.access(browserPath);
+  t.pass();
 });
