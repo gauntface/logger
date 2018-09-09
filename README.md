@@ -14,7 +14,7 @@ colored and prefixed logs to a project in both Node 8+ and the browser.
 </p>
 
 <p align="center">
-<img a;t="Screenshot of hopin-logger demos in Node and Browser" src="https://raw.githubusercontent.com/gauntface/hopin-logger/master/demo/hopin-logger-screenshots.png" />
+<img a;t="Screenshot of hopin-logger demos in Node and Browser" src="https://raw.githubusercontent.com/gauntface/hopin-logger/master/hopin-logger-screenshots.png" />
 </p>
 
 <p align="center">
