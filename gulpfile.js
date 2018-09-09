@@ -46,6 +46,7 @@ gulp.task('prod', (done) => {
 gulp.task('build',
   gulp.series(
     tsBrowser.gulpBuild('hopin', 'browser'),
+    // The order of this is important.
     tsNode.gulpBuild('node'),
   )
 );
