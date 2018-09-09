@@ -62,5 +62,5 @@
   "main": "./build-node/node/index.js",
   "types": "./build-node/node/index.d.ts",
   "browser": "./build-browser/browser/browser.js",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
