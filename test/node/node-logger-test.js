@@ -1,8 +1,8 @@
-import {test} from 'ava';
-import * as sinon from 'sinon';
+const {test} = require('ava');
+const sinon = require('sinon');
 
-import {BrowserLogger as Logger} from '../../src/browser/BrowserLogger';
-import * as LogColors from '../../src/types/LogColors';
+const LogLevels = require('../../build-node/types/LogLevels');
+const {NodeLogger} = require('../../build-node/node/NodeLogger');
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -12,12 +12,24 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
+test.serial('should not print debug by default', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'debug');
+
+  const MSG = 'hello, debug';
+
+  const logger = new NodeLogger();
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 0);
+});
+
 test.serial('should print debug without prefix', (t) => {
   const logSpy = t.context.sandbox.spy(console, 'debug');
 
   const MSG = 'hello, debug';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
+  logger.setLogLevel(LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -30,13 +42,26 @@ test.serial('should print debug with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, debug';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
+  logger.setLogLevel(LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, `background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em`, MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
+});
+
+test.serial('should not print info by default', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'info');
+
+  const MSG = 'hello, info';
+
+  const logger = new NodeLogger();
+  logger.info(MSG);
+
+  t.deepEqual(logSpy.callCount, 0);
 });
 
 test.serial('should print info without prefix', (t) => {
@@ -44,7 +69,8 @@ test.serial('should print info without prefix', (t) => {
 
   const MSG = 'hello, info';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
+  logger.setLogLevel(LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -57,13 +83,15 @@ test.serial('should print info with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, info';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
+  logger.setLogLevel(LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #487eb0; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print log without prefix', (t) => {
@@ -71,7 +99,7 @@ test.serial('should print log without prefix', (t) => {
 
   const MSG = 'hello, log';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
   logger.log(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -84,13 +112,14 @@ test.serial('should print log with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, log';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
   logger.log(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print warn without prefix', (t) => {
@@ -98,7 +127,7 @@ test.serial('should print warn without prefix', (t) => {
 
   const MSG = 'hello, warn';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
   logger.warn(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -111,13 +140,14 @@ test.serial('should print warn with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, warn';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
   logger.warn(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e1b12c; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print error without prefix', (t) => {
@@ -125,7 +155,7 @@ test.serial('should print error without prefix', (t) => {
 
   const MSG = 'hello, error';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
   logger.error(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -138,13 +168,14 @@ test.serial('should print error with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, error';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
   logger.error(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #e74c3c; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
 });
 
 test.serial('should print group without prefix', (t) => {
@@ -153,7 +184,7 @@ test.serial('should print group without prefix', (t) => {
 
   const MSG = 'hello, group';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
   logger.group(MSG);
   logger.info('Level 1');
   logger.group(MSG);
@@ -173,7 +204,7 @@ test.serial('should print group with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, group';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
   logger.group(MSG);
@@ -184,7 +215,8 @@ test.serial('should print group with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
 });
 
@@ -194,7 +226,7 @@ test.serial('should print groupCollapsed without prefix', (t) => {
 
   const MSG = 'hello, groupCollapsed';
 
-  const logger = new Logger();
+  const logger = new NodeLogger();
   logger.groupCollapsed(MSG);
   logger.info('Level 1');
   logger.groupCollapsed(MSG);
@@ -214,7 +246,7 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, groupCollapsed';
 
-  const logger = new Logger({
+  const logger = new NodeLogger({
     prefix: PREFIX
   });
   logger.groupCollapsed(MSG);
@@ -225,6 +257,7 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   logger.groupEnd();
 
   t.deepEqual(logSpy.callCount, 2);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, 'background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em', MSG]);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
 });

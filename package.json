@@ -3,27 +3,21 @@
     "access": "public"
   },
   "scripts": {
-    "ava": "nyc ava ./build/test/{node,integration}/**/*.js",
-    "build": "gulp build",
+    "ava": "nyc ava ./test/{node,integration}/**/*.js",
     "docs": "typedoc ./src/**/*.ts --out ./docs/ --mode file --excludePrivate --excludeProtected --module umd --ignoreCompilerErrors",
     "lint": "tslint 'src/**/*'",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "npm run build && npm run ava && npm run lint",
-    "typescript:modules": "tsc -p ./tsconfigs/modules.json --declaration",
-    "typescript:commonjs": "tsc -p ./tsconfigs/commonjs.json --declaration",
-    "typescript:test": "tsc -p ./tsconfigs/test.json",
-    "version": "echo 'TODO: ./build-docs && git add docs'"
+    "test": "gulp build && npm run ava && npm run lint"
   },
   "nyc": {
     "reporter": [
       "text",
       "html"
-    ],
-    "exclude": [
-      "build/test/**/*"
     ]
   },
   "devDependencies": {
+    "@hopin/wbt-ts-browser": "0.0.13",
+    "@hopin/wbt-ts-node": "0.0.13",
     "@types/express": "4.16.0",
     "@types/fs-extra": "5.0.4",
     "@types/puppeteer": "1.6.3",
@@ -34,21 +28,11 @@
     "fs-extra": "7.0.0",
     "glob": "7.1.3",
     "gulp": "4.0.0",
-    "gulp-rename": "1.4.0",
-    "gulp-sourcemaps": "2.6.4",
-    "gulp-typescript": "4.0.2",
     "nyc": "13.0.1",
     "puppeteer": "1.8.0",
-    "rollup": "0.65.2",
-    "rollup-plugin-sourcemaps": "0.4.2",
-    "rollup-plugin-terser": "2.0.2",
-    "rollup-stream": "1.24.1",
     "sinon": "6.2.0",
     "tslint": "5.11.0",
-    "typedoc": "0.12.0",
-    "typescript": "3.0.3",
-    "vinyl-buffer": "1.0.1",
-    "vinyl-source-stream": "2.0.0"
+    "typedoc": "0.12.0"
   },
   "peerDependencies": {
     "chalk": "^2.x.x"
@@ -60,7 +44,8 @@
     "logger"
   ],
   "files": [
-    "dist/**/*"
+    "build-node/node/*",
+    "build-browser/browser/browser.js"
   ],
   "homepage": "https://github.com/gauntface/hopin-logger#readme",
   "repository": {
@@ -74,8 +59,8 @@
   "description": "A simple console abstraction with some little extras",
   "author": "gauntface",
   "license": "MIT",
-  "main": "./dist/commonjs/node/index.js",
-  "types": "./dist/commonjs/node/index.d.ts",
-  "browser": "./dist/iife/browser/browser.js",
+  "main": "./build-node/node/index.js",
+  "types": "./build-node/node/index.d.ts",
+  "browser": "./build-browser/browser/browser.js",
   "version": "1.0.0"
 }

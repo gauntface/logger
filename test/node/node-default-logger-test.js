@@ -1,8 +1,8 @@
 import {test} from 'ava';
 import * as chalk from 'chalk';
-import * as sinon from 'sinon';
+const sinon = require('sinon');
 
-import {logger} from '../../src/node/index';
+const {logger} = require('../../build-node/node/index');
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();

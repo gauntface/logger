@@ -1,22 +1,16 @@
-import *  as path from 'path';
-import {test} from 'ava';
-import * as puppeteer from 'puppeteer';
+const path = require('path');
+const {test} = require('ava');
+const puppeteer = require('puppeteer');
 
-import {TestServer} from '../utils/TestServer';
-import * as LogColors from '../../src/types/LogColors';
+const TestServer = require('../utils/TestServer');
 
-let server: TestServer;
-let serverAddress: string;
-let browser: puppeteer.Browser;
-let page: puppeteer.Page;
-
-interface MsgData {
-  type: string;
-  text: string;
-}
+let server;
+let serverAddress;
+let browser;
+let page;
 
 async function setupServer() {
-  server = new TestServer(path.join(__dirname, '..', '..', '..'));
+  server = new TestServer(path.join(__dirname, '..', '..'));
   serverAddress = await server.start();
 }
 
@@ -44,7 +38,7 @@ test.serial('should log in browser', async (t) => {
     t.fail(msg.message);
   });
 
-  const messageData: MsgData[] = [];
+  const messageData = [];
   page.on('console', msg => {
     messageData.push({
       type: msg.type(),
@@ -52,14 +46,14 @@ test.serial('should log in browser', async (t) => {
     });
   });
 
-  const response = await page.goto(`${serverAddress}/build/test/static/logger-integration/`);
+  const response = await page.goto(`${serverAddress}/test/static/logger-integration/`);
   t.deepEqual(response.status(), 200);
 
   t.deepEqual(messageData.length, 34);
 
   t.deepEqual(messageData[0], {
     type: 'debug',
-    text: `%chopin-custom-logger-test background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
+    text: `%chopin-custom-logger-test background: #636e72; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
   });
 
   t.deepEqual(messageData[1], {
@@ -144,7 +138,7 @@ test.serial('should log in browser', async (t) => {
 
   t.deepEqual(messageData[17], {
     type: 'debug',
-    text: `%chopin-default-logger-test background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
+    text: `%chopin-default-logger-test background: #636e72; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
   });
 
   t.deepEqual(messageData[18], {

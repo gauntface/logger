@@ -1,21 +1,12 @@
-import * as express from 'express';
-import * as http from 'http';
-import { Application } from 'express-serve-static-core';
+const express = require('express');
 
-type StartOptions = {
-  port?: number;
-};
-
-export class TestServer {
-  private app: Application;
-  private server: http.Server;
-
-  constructor(filePath: string) {
+module.exports = class TestServer {
+  constructor(filePath) {
     this.app = express();
     this.app.use(express.static(filePath));
   }
 
-  start(opts?: StartOptions): Promise<string> {
+  start(opts) {
     let port = 0;
     if (opts && opts.port) {
       port = opts.port;
@@ -39,7 +30,7 @@ export class TestServer {
     });
   }
 
-  close(): Promise<void> {
+  close() {
     return new Promise((resolve) => {
       this.server.close(resolve);
     });

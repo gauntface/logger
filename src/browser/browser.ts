@@ -1,4 +1,4 @@
-import {BrowserLogger} from './BrowserLogger';
+import {BrowserLogger} from './_BrowserLogger';
 
 // This class exists solely so the default export is the logger
 // with log methods while making the underlying logger available.

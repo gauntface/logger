@@ -1,9 +1,8 @@
-import {test} from 'ava';
-import * as chalk from 'chalk';
-import * as sinon from 'sinon';
+const {test} = require('ava');
+const sinon = require('sinon');
 
-import {logger} from '../../src/browser/index';
-import * as LogColors from '../../src/types/LogColors';
+const {logger} = require('../../build-test/browser/index');
+const LogColors = require('../../build-test/types/LogColors');
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
