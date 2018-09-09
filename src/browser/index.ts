@@ -1,4 +1,4 @@
-import {BrowserLogger} from './BrowserLogger';
+import {BrowserLogger} from './_BrowserLogger';
 
 export {BrowserLogger as Logger};
 

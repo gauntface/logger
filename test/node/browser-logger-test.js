@@ -1,7 +1,7 @@
 const {test} = require('ava');
 const sinon = require('sinon');
 
-const {BrowserLogger} = require('../../build-test/browser/BrowserLogger');
+const {BrowserLogger} = require('../../build-test/browser/_BrowserLogger');
 const LogColors = require('../../build-test/types/LogColors');
 
 test.beforeEach((t) => {
