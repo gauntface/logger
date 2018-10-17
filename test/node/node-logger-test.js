@@ -261,3 +261,20 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
 });
+
+test.serial('should print info with prefix set via setPrefix()', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'info');
+
+  const PREFIX = 'hopin-logger-test';
+  const MSG = 'hello, info';
+
+  const logger = new NodeLogger({
+    prefix: PREFIX
+  });
+  logger.setLogLevel(LogLevels.INFO);
+  logger.info(MSG);
+
+  t.deepEqual(logSpy.callCount, 1);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
+});

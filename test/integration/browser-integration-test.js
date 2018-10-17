@@ -49,7 +49,7 @@ test.serial('should log in browser', async (t) => {
   const response = await page.goto(`${serverAddress}/test/static/logger-integration/`);
   t.deepEqual(response.status(), 200);
 
-  t.deepEqual(messageData.length, 34);
+  t.deepEqual(messageData.length, 17);
 
   t.deepEqual(messageData[0], {
     type: 'debug',
@@ -132,91 +132,6 @@ test.serial('should log in browser', async (t) => {
   });
 
   t.deepEqual(messageData[16], {
-    type: 'endGroup',
-    text: 'console.groupEnd',
-  });
-
-  t.deepEqual(messageData[17], {
-    type: 'debug',
-    text: `%chopin-default-logger-test background: #636e72; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, debug`,
-  });
-
-  t.deepEqual(messageData[18], {
-    type: 'info',
-    text: '%chopin-default-logger-test background: #487eb0; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, info',
-  });
-
-  t.deepEqual(messageData[19], {
-    type: 'log',
-    text: '%chopin-default-logger-test background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log',
-  });
-
-  t.deepEqual(messageData[20], {
-    type: 'warning',
-    text: '%chopin-default-logger-test background: #e1b12c; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, warn',
-  });
-
-  t.deepEqual(messageData[21], {
-    type: 'error',
-    text: '%chopin-default-logger-test background: #e74c3c; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, error',
-  });
-
-  t.deepEqual(messageData[22], {
-    type: 'startGroup',
-    text: '%chopin-default-logger-test background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, group 1',
-  });
-
-  t.deepEqual(messageData[23], {
-    type: 'log',
-    text: '%chopin-default-logger-test background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log group 1',
-  });
-
-  t.deepEqual(messageData[24], {
-    type: 'startGroup',
-    text: '%chopin-default-logger-test background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, group 2',
-  });
-
-  t.deepEqual(messageData[25], {
-    type: 'log',
-    text: '%chopin-default-logger-test background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log group 2',
-  });
-
-  t.deepEqual(messageData[26], {
-    type: 'endGroup',
-    text: 'console.groupEnd',
-  });
-
-  t.deepEqual(messageData[27], {
-    type: 'endGroup',
-    text: 'console.groupEnd',
-  });
-
-  t.deepEqual(messageData[28], {
-    type: 'startGroupCollapsed',
-    text: '%chopin-default-logger-test background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, groupCollapsed 1',
-  });
-
-  t.deepEqual(messageData[29], {
-    type: 'log',
-    text: '%chopin-default-logger-test background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log group 1',
-  });
-
-  t.deepEqual(messageData[30], {
-    type: 'startGroupCollapsed',
-    text: '%chopin-default-logger-test background: #00a8ff; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, groupCollapsed 2',
-  });
-
-  t.deepEqual(messageData[31], {
-    type: 'log',
-    text: '%chopin-default-logger-test background: #4cd137; color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log group 2',
-  });
-
-  t.deepEqual(messageData[32], {
-    type: 'endGroup',
-    text: 'console.groupEnd',
-  });
-
-  t.deepEqual(messageData[33], {
     type: 'endGroup',
     text: 'console.groupEnd',
   });
