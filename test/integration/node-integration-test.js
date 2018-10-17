@@ -40,36 +40,6 @@ test.serial('should be able to require Logger from package.json', async (t) => {
   instance.groupEnd();
 });
 
-test.serial('should be able to require logger from package.json', async (t) => {
-  const pkg = await getPackage();
-  const nodePath = path.join(rootDir, pkg.main);
-  await fs.access(nodePath);
-  const {logger} = require(nodePath);
-  t.truthy(logger);
-
-  logger.setPrefix('hopin-logger-test');
-
-  logger.debug('hello, debug');
-  logger.info('hello, info');
-  logger.log('hello, log');
-  logger.warn('hello, warn');
-  logger.error('hello, error');
-
-  logger.group('hello, group 1');
-  logger.log('hello, log group 1');
-  logger.group('hello, group 2');
-  logger.log('hello, log group 2');
-  logger.groupEnd();
-  logger.groupEnd();
-
-  logger.groupCollapsed('hello, groupCollapsed 1');
-  logger.log('hello, log group 1');
-  logger.groupCollapsed('hello, groupCollapsed 2');
-  logger.log('hello, log group 2');
-  logger.groupEnd();
-  logger.groupEnd();
-});
-
 test.serial('should be able to find browser from package.json', async (t) => {
   const pkg = await getPackage();
 
