@@ -22,27 +22,7 @@ colored and prefixed logs to a project in both Node 8+ and the browser.
 </p>
 
 ## Usage in Browser
-
-```html
-<script src="https://unpkg.com/@hopin/logger@0.0.5/dist/iife/browser/browser.js"></script>
-<script>
-hopin.logger.setPrefix('Example');
-
-hopin.logger.debug('Doing some debugging?');
-hopin.logger.info('I hope to provide info');
-hopin.logger.log('I\'m a friendly log.');
-hopin.logger.warn('Oops, I\'m an warning.');
-hopin.logger.error('Eek! I\'m an error.');
-
-hopin.logger.group('I can group logs together.');
-hopin.logger.log('Message in a group....');
-hopin.logger.log('....awesome sauce.');
-hopin.logger.groupEnd();
-</script>
-```
-
-For multiple loggers with seperate prefixes:
-
+ 
 ```html
 <script src="https://unpkg.com/@hopin/logger@0.0.5/dist/iife/browser/browser.js"></script>
 <script>
@@ -59,25 +39,6 @@ example2Logger.log('Oh Hai!');
 ```
 
 ## Usage in Node
-
-```javascript
-const {logger} = require('@hopin/logger');
-
-logger.setPrefix('Example');
-
-logger.debug('Doing some debugging?');
-logger.info('I hope to provide info');
-logger.log('I\'m a friendly log.');
-logger.warn('Oops, I\'m an warning.');
-logger.error('Eek! I\'m an error.');
-
-logger.group('I can group logs together.');
-logger.log('Message in a group....');
-logger.log('....awesome sauce.');
-logger.groupEnd();
-```
-
-For multiple loggers with seperate prefixes:
 
 ```javascript
 const {Logger} = require('@hopin/logger');
