@@ -1,5 +1,5 @@
 const path = require('path');
-const {test} = require('ava');
+const test = require('ava');
 const fs = require('fs-extra');
 
 // Note this is from build/test/...

@@ -1,4 +1,4 @@
-const {test} = require('ava');
+const test = require('ava');
 const sinon = require('sinon');
 
 const LogLevels = require('../../build-node/types/LogLevels');
