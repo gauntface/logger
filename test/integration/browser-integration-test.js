@@ -1,5 +1,5 @@
 const path = require('path');
-const {test} = require('ava');
+const test = require('ava');
 const puppeteer = require('puppeteer');
 
 const TestServer = require('../utils/TestServer');
