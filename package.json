@@ -45,7 +45,7 @@
   ],
   "files": [
     "build-node/*",
-    "build-browser/browser/browser.js"
+    "build-browser/*"
   ],
   "homepage": "https://github.com/gauntface/hopin-logger#readme",
   "repository": {
