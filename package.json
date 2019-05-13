@@ -29,7 +29,7 @@
     "glob": "7.1.4",
     "gulp": "4.0.2",
     "nyc": "14.1.1",
-    "puppeteer": "1.15.0",
+    "puppeteer": "1.16.0",
     "sinon": "7.3.2",
     "tslint": "5.16.0",
     "typedoc": "0.14.2"
