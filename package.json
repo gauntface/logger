@@ -20,7 +20,7 @@
     "@hopin/wbt-ts-node": "0.0.17",
     "@types/express": "4.17.0",
     "@types/fs-extra": "8.0.0",
-    "@types/puppeteer": "1.19.0",
+    "@types/puppeteer": "1.20.2",
     "@types/sinon": "7.0.13",
     "ava": "1.4.1",
     "coveralls": "3.0.5",
