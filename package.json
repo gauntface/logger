@@ -4,10 +4,11 @@
   },
   "scripts": {
     "ava": "nyc ava ./test/{node,integration}/**/*.js",
+    "build": "gulp build",
     "docs": "typedoc ./src/**/*.ts --out ./docs/ --mode file --excludePrivate --excludeProtected --module umd --ignoreCompilerErrors",
     "lint": "tslint 'src/**/*'",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "gulp build && npm run ava && npm run lint"
+    "test": "npm run build && npm run ava && npm run lint"
   },
   "nyc": {
     "reporter": [
