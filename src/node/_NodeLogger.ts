@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 import {AbstractLogger} from '../shared/_AbstractLogger';
 import * as LogLevels from '../types/_LogLevels';

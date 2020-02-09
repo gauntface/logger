@@ -35,7 +35,7 @@
     "tslint": "6.0.0"
   },
   "peerDependencies": {
-    "chalk": "^2.x.x"
+    "chalk": "^3.x.x"
   },
   "keywords": [
     "console",
@@ -62,5 +62,8 @@
   "main": "./build-node/node/index.js",
   "types": "./build-node/node/index.d.ts",
   "browser": "./build-browser/browser/browser.js",
-  "version": "2.0.1"
+  "version": "2.0.1",
+  "dependencies": {
+    "chalk": "^3.0.0"
+  }
 }
