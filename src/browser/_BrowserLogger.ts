@@ -1,6 +1,6 @@
-import {AbstractLogger} from '../shared/AbstractLogger';
-import * as LogLevels from '../types/LogLevels';
-import * as LogColors from '../types/LogColors';
+import {AbstractLogger} from '../shared/_AbstractLogger';
+import * as LogLevels from '../types/_LogLevels';
+import * as LogColors from '../types/_LogColors';
 
 export class BrowserLogger extends AbstractLogger {
   protected colorPrefix(logLevel: LogLevels.LogLevel,prefix: string): string[] {

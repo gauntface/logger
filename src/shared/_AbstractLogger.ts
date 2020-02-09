@@ -1,4 +1,4 @@
-import * as LogLevels from '../types/LogLevels';
+import * as LogLevels from '../types/_LogLevels';
 
 export type LoggerOpts = {
   prefix?: string;
