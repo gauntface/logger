@@ -5,15 +5,14 @@
   "scripts": {
     "ava": "nyc ava ./test/{node,integration}/**/*.js",
     "build": "gulp build",
-    "docs": "typedoc ./src/**/*.ts --out ./docs/ --mode file --excludePrivate --excludeProtected --module umd --ignoreCompilerErrors",
     "lint": "tslint 'src/**/*'",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run build && npm run ava && npm run lint"
   },
   "nyc": {
     "reporter": [
       "text",
-      "html"
+      "html",
+      "lcov"
     ]
   },
   "devDependencies": {
@@ -33,8 +32,7 @@
     "nyc": "15.0.0",
     "puppeteer": "2.1.1",
     "sinon": "8.1.1",
-    "tslint": "^6.0.0",
-    "typedoc": "0.16.9"
+    "tslint": "^6.0.0"
   },
   "peerDependencies": {
     "chalk": "^2.x.x"

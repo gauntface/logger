@@ -12,8 +12,10 @@ jobs:
       run: npm run build
     - name: Test
       run: npm run test
-    - name: Coverage
-      run: npm run report-coverage
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Publish
       if: github.ref == 'refs/heads/master'
       uses: mikeal/merge-release@master
