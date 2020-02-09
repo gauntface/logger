@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 const {setConfig} = require('@hopin/wbt-config');
 const tsNode = require('@hopin/wbt-ts-node'); 
 const tsBrowser = require('@hopin/wbt-ts-browser'); 
+const clean = require('@hopin/wbt-clean'); 
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
@@ -15,11 +16,13 @@ const buildNodeDir = path.join(__dirname, 'build-node');
 const buildTestDir = path.join(__dirname, 'build-test');
 
 gulp.task('clean',
-  gulp.parallel(
-    () => fs.remove(buildBrowserDir),
-    () => fs.remove(buildNodeDir),
-    () => fs.remove(buildTestDir),
-  )
+  clean.gulpClean({
+    dst,
+  }, [
+    buildBrowserDir,
+    buildNodeDir,
+    buildTestDir,
+  ])
 )
 
 gulp.task('build',
