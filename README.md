@@ -1,7 +1,7 @@
 <h1  align="center">@hopin/logger</h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/gauntface/hopin-logger"><img src="https://travis-ci.org/gauntface/hopin-logger.svg?branch=master" alt="Travis Build Status" /></a>
+  <img src="https://github.com/gauntface/hopin-logger/workflows/Build%20and%20Publish/badge.svg" alt="Build and Publish Status" />
   <a href="https://coveralls.io/github/gauntface/hopin-logger?branch=master"><img src="https://img.shields.io/coveralls/github/gauntface/hopin-logger.svg" alt="Coverage Status" /></a>
   <a href="https://david-dm.org/gauntface/hopin-logger" title="dependencies status"><img src="https://david-dm.org/gauntface/hopin-logger/status.svg"/></a>
   <a href="https://david-dm.org/gauntface/hopin-logger?type=dev" title="devDependencies status"><img src="https://david-dm.org/gauntface/hopin-logger/dev-status.svg"/></a>
