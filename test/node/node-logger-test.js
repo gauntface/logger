@@ -1,8 +1,7 @@
 const test = require('ava');
 const sinon = require('sinon');
 
-const LogLevels = require('../../build-node/types/LogLevels');
-const {NodeLogger} = require('../../build-node/node/NodeLogger');
+const hopinlogger = require('../../build-node/node/index');
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -17,7 +16,7 @@ test.serial('should not print debug by default', (t) => {
 
   const MSG = 'hello, debug';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 0);
@@ -28,8 +27,8 @@ test.serial('should print debug without prefix', (t) => {
 
   const MSG = 'hello, debug';
 
-  const logger = new NodeLogger();
-  logger.setLogLevel(LogLevels.DEBUG);
+  const logger = new hopinlogger.Logger();
+  logger.setLogLevel(hopinlogger.LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -42,10 +41,10 @@ test.serial('should print debug with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, debug';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
-  logger.setLogLevel(LogLevels.DEBUG);
+  logger.setLogLevel(hopinlogger.LogLevels.DEBUG);
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -58,7 +57,7 @@ test.serial('should not print info by default', (t) => {
 
   const MSG = 'hello, info';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 0);
@@ -69,8 +68,8 @@ test.serial('should print info without prefix', (t) => {
 
   const MSG = 'hello, info';
 
-  const logger = new NodeLogger();
-  logger.setLogLevel(LogLevels.INFO);
+  const logger = new hopinlogger.Logger();
+  logger.setLogLevel(hopinlogger.LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -83,10 +82,10 @@ test.serial('should print info with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, info';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
-  logger.setLogLevel(LogLevels.INFO);
+  logger.setLogLevel(hopinlogger.LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -99,7 +98,7 @@ test.serial('should print log without prefix', (t) => {
 
   const MSG = 'hello, log';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.log(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -112,7 +111,7 @@ test.serial('should print log with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, log';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
   logger.log(MSG);
@@ -127,7 +126,7 @@ test.serial('should print warn without prefix', (t) => {
 
   const MSG = 'hello, warn';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.warn(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -140,7 +139,7 @@ test.serial('should print warn with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, warn';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
   logger.warn(MSG);
@@ -155,7 +154,7 @@ test.serial('should print error without prefix', (t) => {
 
   const MSG = 'hello, error';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.error(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
@@ -168,7 +167,7 @@ test.serial('should print error with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, error';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
   logger.error(MSG);
@@ -184,7 +183,7 @@ test.serial('should print group without prefix', (t) => {
 
   const MSG = 'hello, group';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.group(MSG);
   logger.info('Level 1');
   logger.group(MSG);
@@ -204,7 +203,7 @@ test.serial('should print group with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, group';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
   logger.group(MSG);
@@ -226,7 +225,7 @@ test.serial('should print groupCollapsed without prefix', (t) => {
 
   const MSG = 'hello, groupCollapsed';
 
-  const logger = new NodeLogger();
+  const logger = new hopinlogger.Logger();
   logger.groupCollapsed(MSG);
   logger.info('Level 1');
   logger.groupCollapsed(MSG);
@@ -246,7 +245,7 @@ test.serial('should print groupCollapsed with prefix', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, groupCollapsed';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
   logger.groupCollapsed(MSG);
@@ -268,10 +267,10 @@ test.serial('should print info with prefix set via setPrefix()', (t) => {
   const PREFIX = 'hopin-logger-test';
   const MSG = 'hello, info';
 
-  const logger = new NodeLogger({
+  const logger = new hopinlogger.Logger({
     prefix: PREFIX
   });
-  logger.setLogLevel(LogLevels.INFO);
+  logger.setLogLevel(hopinlogger.LogLevels.INFO);
   logger.info(MSG);
 
   t.deepEqual(logSpy.callCount, 1);

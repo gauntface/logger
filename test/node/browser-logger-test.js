@@ -2,7 +2,6 @@ const test = require('ava');
 const sinon = require('sinon');
 
 const {BrowserLogger} = require('../../build-test/browser/_BrowserLogger');
-const LogColors = require('../../build-test/types/LogColors');
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -36,7 +35,7 @@ test.serial('should print debug with prefix', (t) => {
   logger.debug(MSG);
 
   t.deepEqual(logSpy.callCount, 1);
-  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, `background: ${LogColors.DEBUG}; color: white; padding: 2px 0.5em; border-radius: 0.5em`, MSG]);
+  t.deepEqual(logSpy.getCall(0).args, [`%c${PREFIX}`, `background: #636e72; color: white; padding: 2px 0.5em; border-radius: 0.5em`, MSG]);
 });
 
 test.serial('should print info without prefix', (t) => {
