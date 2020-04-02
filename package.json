@@ -35,7 +35,7 @@
     "tslint": "6.1.1"
   },
   "peerDependencies": {
-    "chalk": "^3.x.x"
+    "chalk": "^3.x.x || ^4.0.0"
   },
   "keywords": [
     "console",
@@ -64,6 +64,6 @@
   "browser": "./build-browser/browser/browser.js",
   "version": "2.0.1",
   "dependencies": {
-    "chalk": "^3.0.0"
+    "chalk": "^4.0.0"
   }
 }
