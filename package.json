@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@hopin/wbt-clean": "0.0.33",
-    "@hopin/wbt-ts-browser": "0.0.33",
+    "@hopin/wbt-ts-browser": "0.0.126",
     "@hopin/wbt-ts-node": "0.0.33",
     "@types/express": "4.17.6",
     "@types/fs-extra": "9.0.1",
