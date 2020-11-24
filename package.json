@@ -22,7 +22,7 @@
     "@types/express": "4.17.9",
     "@types/fs-extra": "9.0.4",
     "@types/puppeteer": "5.4.0",
-    "@types/sinon": "9.0.8",
+    "@types/sinon": "9.0.9",
     "ava": "3.13.0",
     "coveralls": "3.1.0",
     "express": "4.17.1",
