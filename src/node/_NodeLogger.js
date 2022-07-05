@@ -1,5 +1,3 @@
-import * as chalk from 'chalk';
-
 import {AbstractLogger} from '../shared/_AbstractLogger.js';
 import * as LogLevels from '../types/_LogLevels.js';
 import * as LogColors from '../types/_LogColors.js';
