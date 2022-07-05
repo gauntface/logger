@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-module.exports = class TestServer {
+export class TestServer {
   constructor(filePath) {
     this.app = express();
     this.app.use(express.static(filePath));

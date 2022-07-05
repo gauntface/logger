@@ -2,11 +2,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "scripts": {
     "ava": "nyc ava ./test/{node,integration}/**/*.js",
-    "build": "gulp build",
-    "lint": "tslint 'src/**/*'",
-    "test": "npm run build && npm run ava && npm run lint"
+    "build": "rm -rf build/ && esbuild src/browser/browser-globals.js --bundle --sourcemap --outfile=build/browser-globals.js --format=cjs",
+    "test": "npm run build && npm run ava"
   },
   "nyc": {
     "reporter": [
@@ -16,54 +16,26 @@
     ]
   },
   "devDependencies": {
-    "@hopin/wbt-clean": "0.0.33",
-    "@hopin/wbt-ts-browser": "0.0.33",
-    "@hopin/wbt-ts-node": "0.0.33",
-    "@types/express": "4.17.11",
-    "@types/fs-extra": "9.0.11",
-    "@types/puppeteer": "5.4.3",
-    "@types/sinon": "10.0.0",
-    "ava": "4.0.0",
+    "ava": "4.3.0",
     "coveralls": "3.1.0",
     "express": "4.17.1",
     "fs-extra": "9.1.0",
-    "glob": "7.1.6",
-    "gulp": "4.0.2",
     "nyc": "15.1.0",
     "puppeteer": "8.0.0",
-    "sinon": "10.0.0",
-    "tslint": "6.1.3"
-  },
-  "peerDependencies": {
-    "chalk": "^3.x.x || ^4.0.0 || ^4.0.0 || ^4.0.0"
+    "sinon": "10.0.0"
   },
   "keywords": [
     "console",
     "log",
-    "hoping",
     "logger"
   ],
   "files": [
-    "build-node/*",
-    "build-browser/*"
+    "build/*",
+    "src/*"
   ],
-  "homepage": "https://github.com/gauntface/hopin-logger#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gauntface/hopin-logger.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gauntface/hopin-logger/issues"
-  },
-  "name": "@hopin/logger",
+  "name": "@gauntface/logger",
   "description": "A simple console abstraction with some little extras",
-  "author": "gauntface",
-  "license": "MIT",
-  "main": "./build-node/node/index.js",
-  "types": "./build-node/node/index.d.ts",
-  "browser": "./build-browser/browser/browser.js",
-  "version": "2.0.1",
-  "dependencies": {
-    "chalk": "^4.0.0"
-  }
+  "main": "./src/node/node.js",
+  "browser": "./src/browser/browser.js",
+  "version": "3.0.1"
 }

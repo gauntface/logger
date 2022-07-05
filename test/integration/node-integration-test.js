@@ -1,9 +1,9 @@
-const path = require('path');
-const test = require('ava');
-const fs = require('fs-extra');
+import path from 'path';
+import test from 'ava';
+import fs from 'fs-extra';
 
 // Note this is from build/test/...
-const rootDir = path.join(__dirname, '..', '..');
+const rootDir = path.resolve();
 
 function getPackage() {
   return fs.readJson(path.join(rootDir, 'package.json'));
@@ -13,10 +13,10 @@ test.serial('should be able to require Logger from package.json', async (t) => {
   const pkg = await getPackage();
   const nodePath = path.join(rootDir, pkg.main);
   await fs.access(nodePath);
-  const {Logger} = require(nodePath);
+  const {Logger} = await import(nodePath);
   t.truthy(Logger);
 
-  const instance = new Logger({prefix: 'hopin-logger-test'});
+  const instance = new Logger({prefix: 'logger-test'});
   t.truthy(instance);
 
   instance.debug('hello, debug');

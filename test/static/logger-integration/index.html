@@ -1,17 +1,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>hopin-logger</title>
+    <title>logger</title>
   </head>
 
   <body>
     <h1>Hello from Logger Integration</h1>
 
     <!-- This is accessible due to another statuc serve in TestServer.ts -->
-    <script src="/build-browser/browser/browser.js"></script>
+    <script src="/build/browser-globals.js"></script>
     <script>
-      const prefixedLogger = new hopin.logger.Logger({
-        prefix: 'hopin-custom-logger-test',
+      gauntface.logger.debug('hello, debug');
+      gauntface.logger.info('hello, info');
+      gauntface.logger.log('hello, log');
+      gauntface.logger.warn('hello, warn');
+      gauntface.logger.error('hello, error');
+
+      gauntface.logger.group('hello, group 1');
+      gauntface.logger.log('hello, log group 1');
+      gauntface.logger.group('hello, group 2');
+      gauntface.logger.log('hello, log group 2');
+      gauntface.logger.groupEnd();
+      gauntface.logger.groupEnd();
+
+      gauntface.logger.groupCollapsed('hello, groupCollapsed 1');
+      gauntface.logger.log('hello, log group 1');
+      gauntface.logger.groupCollapsed('hello, groupCollapsed 2');
+      gauntface.logger.log('hello, log group 2');
+      gauntface.logger.groupEnd();
+      gauntface.logger.groupEnd();
+
+      const prefixedLogger = new gauntface.Logger({
+        prefix: 'custom-logger-test',
       });
       prefixedLogger.debug('hello, debug');
       prefixedLogger.info('hello, info');
