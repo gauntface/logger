@@ -4,7 +4,7 @@
   },
   "type": "module",
   "scripts": {
-    "ava": "nyc ava ./test/{node,integration}/**/*.js",
+    "ava": "nyc ava --serial ./test/{node,integration}/**/*.js",
     "build": "rm -rf build/ && esbuild src/browser/browser-globals.js --bundle --sourcemap --outfile=build/browser-globals.js --format=cjs",
     "test": "npm run build && npm run ava"
   },
