@@ -4,24 +4,15 @@
   },
   "type": "module",
   "scripts": {
-    "ava": "nyc ava --serial ./test/{node,integration}/**/*.js",
+    "ava": "ava ./test/{node,integration}/**/*.js",
     "build": "rm -rf build/ && esbuild src/browser/browser-globals.js --bundle --sourcemap --outfile=build/browser-globals.js --format=cjs",
     "test": "npm run build && npm run ava"
   },
-  "nyc": {
-    "reporter": [
-      "text",
-      "html",
-      "lcov"
-    ]
-  },
   "devDependencies": {
     "ava": "4.3.0",
-    "coveralls": "3.1.1",
     "esbuild": "0.14.48",
     "express": "4.18.1",
     "fs-extra": "10.1.0",
-    "nyc": "15.1.0",
     "puppeteer": "15.3.0",
     "sinon": "14.0.0"
   },
