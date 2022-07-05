@@ -1,6 +1,7 @@
 import test from 'ava';
 import sinon from 'sinon';
-import {Logger} from '../../src/node/node.js';
+import {Logger, LogLevels} from '../../src/node/node.js';
+import {DEFAULT_PREFIXES} from '../../src/shared/_AbstractLogger.js';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -102,4 +103,32 @@ test.serial('nest collapsed groups', (t) => {
   t.deepEqual(logSpy.callCount, 2);
   t.deepEqual(logSpy.getCall(0).args[1], MSG);
   t.deepEqual(logEndSpy.callCount, 2);
+});
+
+test.serial('use custom object prefix', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'log');
+  const debugSpy = t.context.sandbox.spy(console, 'debug');
+
+  const PREFIX = 'custom-prefix';
+  const MSG = 'hello, custom prefix';
+
+  const logger = new Logger();
+  logger.setPrefix({
+    [LogLevels.LOG]: PREFIX,
+  });
+
+  t.deepEqual(logger.opts.prefix, Object.assign(DEFAULT_PREFIXES, {
+    [LogLevels.LOG]: 'custom-prefix'
+  }));
+
+  logger.log(MSG);
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 1);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
+
+  t.deepEqual(debugSpy.callCount, 1);
+  t.deepEqual(debugSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(debugSpy.getCall(0).args[1], MSG);
 });
