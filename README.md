@@ -18,15 +18,25 @@ colored and prefixed logs to a project in both Node and the browser.
 ```html
 <script src="https://unpkg.com/@gauntface/logger@3.0.1/build/browser-globals.js"></script>
 <script>
-  // Use the default logger
-  gauntface.logger.debug(`Hello, World!`);
+ console.log('The following are the logs out of the box:');
+  gauntface.logger.debug(`console.debug()`);
+  gauntface.logger.info(`console.info()`);
+  gauntface.logger.log(`console.log()`);
+  gauntface.logger.warn(`console.warn()`);
+  gauntface.logger.error(`console.error()`);
 
   // Customize the default loggers prefix
-  gauntface.logger.setPrefix(`GitHub README Demo`);
-  gauntface.logger.log(`*wave*`);
+  console.log();
+  console.log('You can customize the prefix to something you\'ll recognize:');
+  gauntface.logger.setPrefix(`Logger Demo`);
+  gauntface.logger.log('👋');
 
   // Create your own logger instances
-  const simpleLogger = new gauntface.Logger();
+  console.log();
+  console.log('You can create different instances of "Loggers":');
+  const simpleLogger = new gauntface.Logger({
+    prefix: 'My App/Demo',
+  });
   simpleLogger.warn(`Logger supports warn()...`);
   simpleLogger.error(`...and error()`);
 
@@ -34,23 +44,15 @@ colored and prefixed logs to a project in both Node and the browser.
   // levels
   const complexLogger = new gauntface.Logger({
     prefix: {
-<<<<<<< HEAD
       [gauntface.LogLevels.GROUP]: 'My App',
       [gauntface.LogLevels.ERROR]: '👻',
-=======
-      [gauntface.LogLevels.GROUP]: 'My App'
->>>>>>> b0d3892 (Adding default prefix)
     },
   });
   complexLogger.log('The logger lib also supports groups');
   complexLogger.group(`Like this one`);
   complexLogger.log(`I'm nested`);
   complexLogger.groupCollapsed(`You can collapse them too`);
-<<<<<<< HEAD
   complexLogger.error(`Boo`);
-=======
-  complexLogger.error(`Mwuhahaha`);
->>>>>>> b0d3892 (Adding default prefix)
   complexLogger.groupEnd();
   complexLogger.groupEnd();
 </script>
