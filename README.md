@@ -65,16 +65,43 @@ colored and prefixed logs to a project in both Node and the browser.
 
 ## Usage in Node
 
+Using the default logger:
+```javascript
+const {logger} = require('@gauntface/logger');
+
+logger.debug(`console.debug()`);
+logger.info(`console.info()`);
+logger.log(`console.log()`);
+logger.warn(`console.warn()`);
+logger.error(`console.error()`);
+
+// Customize the default loggers prefix
+logger.setPrefix(`Logger Demo`);
+logger.log('👋');
+```
+
+Using a custom logger
 ```javascript
 const {Logger} = require('@gauntface/logger');
 
-const example1Logger = new Logger({
-  prefix: 'Example 1',
+const simpleLogger = new Logger({
+  prefix: 'My App/Demo',
 });
-const example2Logger = new Logger({
-  prefix: 'Example 2',
+simpleLogger.log(`Example message`, {
+  message: 'Works just like console.log()'
 });
-
-example1Logger.debug('Hello Logger 2 *waves*');
-example2Logger.log('Oh Hai!');
 ```
+
+The package.json defines a main and a browser property which
+should allow you to use `@gauntface/logger` for importing, if
+however you want to explicitly get the browser / node version
+please use the following imports:
+
+- For the browser:
+    ```javascript
+    import {logger, Logger, ...} from '@gauntface/logger/src/browser/browser.js';
+    ```
+- For node:
+    ```javascript
+    import {logger, Logger, ...} from '@gauntface/logger/src/node/node.js';
+    ```
