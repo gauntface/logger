@@ -32,6 +32,7 @@ export class AbstractLogger {
    */
   constructor(opts) {
     this.opts = opts || {};
+    this.setPrefix(this.opts.prefix);
     this.currentLogLevel = this.getDefaultLogLevel();
   }
 
@@ -39,7 +40,7 @@ export class AbstractLogger {
    * @param {string|object} prefix
    */
   setPrefix(prefix) {
-    if (typeof prefix == 'object') {
+    if (!prefix || typeof prefix == 'object') {
       this.opts.prefix = {};
       for (const k of Object.keys(DEFAULT_PREFIXES)) {
         this.opts.prefix[k] = prefix[k] || DEFAULT_PREFIXES[k];

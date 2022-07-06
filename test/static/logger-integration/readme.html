@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>logger</title>
+  </head>
+
+  <body>
+    <h1>README Demo</h1>
+
+    <script src="https://unpkg.com/@gauntface/logger@3.0.1/build/browser-globals.js"></script>
+<script>
+  // Use the default logger
+  gauntface.logger.debug(`Hello, World!`);
+
+  // Customize the default loggers prefix
+  gauntface.logger.setPrefix(`GitHub README Demo`);
+  gauntface.logger.log(`*wave*`);
+
+  // Create your own logger instances
+  const simpleLogger = new gauntface.Logger();
+  simpleLogger.warn(`Logger supports warn()...`);
+  simpleLogger.error(`...and error()`);
+
+  // Use your own prefix for some or all of the log
+  // levels
+  const complexLogger = new gauntface.Logger({
+    prefix: {
+      [gauntface.LogLevels.GROUP]: 'My App'
+    },
+  });
+  complexLogger.log('The logger lib also supports groups');
+  complexLogger.group(`Like this one`);
+  complexLogger.log(`I'm nested`);
+  complexLogger.groupCollapsed(`You can collapse them too`);
+  complexLogger.error(`Mwuhahaha`);
+  complexLogger.groupEnd();
+  complexLogger.groupEnd();
+</script>
+  </body>
+</html>
