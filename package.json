@@ -29,5 +29,5 @@
   "description": "A simple console abstraction with some little extras",
   "main": "./src/node/node.js",
   "browser": "./src/browser/browser.js",
-  "version": "3.0.1"
+  "version": "3.0.2"
 }
