@@ -16,39 +16,44 @@ colored and prefixed logs to a project in both Node and the browser.
 ## Usage in Browser
 
 ```html
-<script src="https://unpkg.com/@gauntface/logger@3.0.1/build/browser-globals.js"></script>
+<script src="https://unpkg.com/@gauntface/logger@3.0.2/build/browser-globals.js"></script>
 <script>
- console.log('The following are the logs out of the box:');
+  console.log('\n\nThe following are the logs out of the box:\n\n\n');
+
+  // Use the default logger
   gauntface.logger.debug(`console.debug()`);
   gauntface.logger.info(`console.info()`);
   gauntface.logger.log(`console.log()`);
   gauntface.logger.warn(`console.warn()`);
   gauntface.logger.error(`console.error()`);
 
+  console.log('\n\nYou can customize the prefix to something you\'ll recognize:\n\n\n');
+
   // Customize the default loggers prefix
-  console.log();
-  console.log('You can customize the prefix to something you\'ll recognize:');
   gauntface.logger.setPrefix(`Logger Demo`);
   gauntface.logger.log('👋');
 
   // Create your own logger instances
-  console.log();
-  console.log('You can create different instances of "Loggers":');
+  console.log('\n\nYou can create different instances of "Loggers":\n\n\n');
+
   const simpleLogger = new gauntface.Logger({
     prefix: 'My App/Demo',
   });
-  simpleLogger.warn(`Logger supports warn()...`);
-  simpleLogger.error(`...and error()`);
+  simpleLogger.log(`Example message`, {
+    message: 'Works just like console.log()'
+  });
+
+  console.log('\n\nYou can also customize each log level prefix:\n\n\n')
 
   // Use your own prefix for some or all of the log
   // levels
   const complexLogger = new gauntface.Logger({
     prefix: {
-      [gauntface.LogLevels.GROUP]: 'My App',
+      [gauntface.LogLevels.GROUP]: 'My App/Groups',
       [gauntface.LogLevels.ERROR]: '👻',
     },
   });
-  complexLogger.log('The logger lib also supports groups');
+  complexLogger.log('The logger lib supports groups');
   complexLogger.group(`Like this one`);
   complexLogger.log(`I'm nested`);
   complexLogger.groupCollapsed(`You can collapse them too`);
