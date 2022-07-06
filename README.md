@@ -1,4 +1,4 @@
-<h1  align="center">@hopin/logger</h1>
+<h1  align="center">@gauntface/logger</h1>
 
 <p align="center">
   <img src="https://github.com/gauntface/logger/workflows/Build%20and%20Publish/badge.svg" alt="Build and Publish Status" />
@@ -66,7 +66,7 @@ colored and prefixed logs to a project in both Node and the browser.
 ## Usage in Node
 
 ```javascript
-const {Logger} = require('@hopin/logger');
+const {Logger} = require('@gauntface/logger');
 
 const example1Logger = new Logger({
   prefix: 'Example 1',
