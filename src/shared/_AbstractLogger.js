@@ -40,9 +40,13 @@ export class AbstractLogger {
    * @param {string|object} prefix
    */
   setPrefix(prefix) {
+<<<<<<< HEAD
     if (!prefix) {
       this.opts.prefix = DEFAULT_PREFIXES;
     } else if (typeof prefix == 'object') {
+=======
+    if (!prefix || typeof prefix == 'object') {
+>>>>>>> b0d3892 (Adding default prefix)
       this.opts.prefix = {};
       for (const k of Object.keys(DEFAULT_PREFIXES)) {
         this.opts.prefix[k] = prefix[k] || DEFAULT_PREFIXES[k];

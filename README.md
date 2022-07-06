@@ -34,15 +34,23 @@ colored and prefixed logs to a project in both Node and the browser.
   // levels
   const complexLogger = new gauntface.Logger({
     prefix: {
+<<<<<<< HEAD
       [gauntface.LogLevels.GROUP]: 'My App',
       [gauntface.LogLevels.ERROR]: '👻',
+=======
+      [gauntface.LogLevels.GROUP]: 'My App'
+>>>>>>> b0d3892 (Adding default prefix)
     },
   });
   complexLogger.log('The logger lib also supports groups');
   complexLogger.group(`Like this one`);
   complexLogger.log(`I'm nested`);
   complexLogger.groupCollapsed(`You can collapse them too`);
+<<<<<<< HEAD
   complexLogger.error(`Boo`);
+=======
+  complexLogger.error(`Mwuhahaha`);
+>>>>>>> b0d3892 (Adding default prefix)
   complexLogger.groupEnd();
   complexLogger.groupEnd();
 </script>
