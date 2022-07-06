@@ -90,7 +90,7 @@ test.serial('nest collapsed groups', (t) => {
   t.deepEqual(logEndSpy.callCount, 2);
 });
 
-test.serial('use custom object prefix', (t) => {
+test.serial('use custom object prefix via setPrefix()', (t) => {
   const logSpy = t.context.sandbox.spy(console, 'log');
   const debugSpy = t.context.sandbox.spy(console, 'debug');
 
@@ -100,6 +100,35 @@ test.serial('use custom object prefix', (t) => {
   const logger = new Logger();
   logger.setPrefix({
     [LogLevels.LOG]: PREFIX,
+  });
+
+  t.deepEqual(logger.opts.prefix, Object.assign(DEFAULT_PREFIXES, {
+    [LogLevels.LOG]: 'custom-prefix'
+  }));
+
+  logger.log(MSG);
+  logger.debug(MSG);
+
+  t.deepEqual(logSpy.callCount, 1);
+  t.notDeepEqual(logSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(logSpy.getCall(0).args[1], MSG);
+
+  t.deepEqual(debugSpy.callCount, 1);
+  t.deepEqual(debugSpy.getCall(0).args[0].indexOf(PREFIX), -1);
+  t.deepEqual(debugSpy.getCall(0).args[1], MSG);
+});
+
+test.serial('use custom object prefix via constructor', (t) => {
+  const logSpy = t.context.sandbox.spy(console, 'log');
+  const debugSpy = t.context.sandbox.spy(console, 'debug');
+
+  const PREFIX = 'custom-prefix';
+  const MSG = 'hello, custom prefix';
+
+  const logger = new Logger({
+    prefix: {
+      [LogLevels.LOG]: PREFIX,
+    },
   });
 
   t.deepEqual(logger.opts.prefix, Object.assign(DEFAULT_PREFIXES, {
