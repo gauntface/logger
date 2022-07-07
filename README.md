@@ -1,17 +1,11 @@
-<h1  align="center">@gauntface/logger</h1>
+![Image of the default emoji used by the logger](default-social.png)
 
-<p align="center">
-  <img src="https://github.com/gauntface/logger/workflows/Build%20and%20Publish/badge.svg" alt="Build and Publish Status" />
-</p>
+# @gauntface/logger
 
-<p align="center">
 `@gauntface/logger` is a simple library aimed at making it easy to add
 colored and prefixed logs to a project in both Node and the browser.
-</p>
 
-<p align="center">
-<img a;t="Screenshot of hopin-logger demos in Node and Browser" src="https://raw.githubusercontent.com/gauntface/hopin-logger/master/hopin-logger-screenshots.png" />
-</p>
+![Screenshot of logger demos in Node and Browser](logger-screenshots.png)
 
 ## Usage in Browser
 
