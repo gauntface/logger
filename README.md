@@ -5,7 +5,7 @@
 `@gauntface/logger` is a simple library aimed at making it easy to add
 colored and prefixed logs to a project in both Node and the browser.
 
-![Screenshot of logger demos in Node and Browser](logger-screenshot.png)
+![Screenshot of logger demos in Node and Browser](logger-screenshots.png)
 
 ## Usage in Browser
 
