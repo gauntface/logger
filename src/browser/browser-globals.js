@@ -1,3 +1,3 @@
 import * as globals from './browser.js';
-window['gauntface'] = window['gauntface'] || {};
-Object.assign(window['gauntface'], globals);
+self['gauntface'] = self['gauntface'] || {};
+Object.assign(self['gauntface'], globals);
