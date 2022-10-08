@@ -11,7 +11,7 @@
   "devDependencies": {
     "ava": "4.3.3",
     "esbuild": "0.15.10",
-    "express": "4.18.1",
+    "express": "4.18.2",
     "fs-extra": "10.1.0",
     "puppeteer": "18.2.1",
     "sinon": "14.0.1"
