@@ -12,9 +12,9 @@
     "ava": "5.1.0",
     "esbuild": "0.15.16",
     "express": "4.18.2",
-    "fs-extra": "10.1.0",
+    "fs-extra": "11.0.0",
     "puppeteer": "19.3.0",
-    "sinon": "14.0.2"
+    "sinon": "15.0.0"
   },
   "keywords": [
     "console",
