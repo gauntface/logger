@@ -9,8 +9,8 @@
     "test": "npm run build && npm run ava"
   },
   "devDependencies": {
-    "ava": "5.1.1",
-    "esbuild": "0.17.5",
+    "ava": "5.2.0",
+    "esbuild": "0.17.6",
     "express": "4.18.2",
     "fs-extra": "11.1.0",
     "puppeteer": "19.6.3",
