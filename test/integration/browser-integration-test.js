@@ -46,7 +46,9 @@ test.serial('log in browser', async (t) => {
     });
   });
 
-  const response = await page.goto(`${serverAddress}/test/static/logger-integration/`);
+  const response = await page.goto(`${serverAddress}/test/static/logger-integration/`, {
+    waitUntil: 'networkidle0',
+  });
   t.deepEqual(response.status(), 200);
 
   t.deepEqual(messageData.length, 34);
