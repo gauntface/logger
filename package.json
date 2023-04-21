@@ -13,8 +13,8 @@
     "esbuild": "0.17.17",
     "express": "4.18.2",
     "fs-extra": "11.1.1",
-    "puppeteer": "19.9.1",
-    "sinon": "15.0.3"
+    "puppeteer": "19.10.0",
+    "sinon": "15.0.4"
   },
   "keywords": [
     "console",
