@@ -13,7 +13,7 @@
     "esbuild": "0.19.3",
     "express": "4.18.2",
     "fs-extra": "11.1.1",
-    "puppeteer": "21.3.4",
+    "puppeteer": "21.3.5",
     "sinon": "16.0.0"
   },
   "keywords": [
