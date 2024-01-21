@@ -9,7 +9,7 @@
     "test": "npm run build && npm run ava"
   },
   "devDependencies": {
-    "ava": "6.0.1",
+    "ava": "6.1.0",
     "esbuild": "0.19.11",
     "express": "4.18.2",
     "fs-extra": "11.2.0",
