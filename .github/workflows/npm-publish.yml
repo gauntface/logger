@@ -5,14 +5,14 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
     - name: Install
       run: npm install
     - name: Test
       run: npm run test
     - name: Publish
       if: github.ref == 'refs/heads/main'
-      uses: mikeal/merge-release@master
+      uses: mikeal/merge-release@30319a1b598fb54c7117f8bfb4f488e19a3a2dec # master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
