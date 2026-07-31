@@ -67,7 +67,7 @@ test.serial('log in browser', async (t) => {
       text: '%c💬 background: rgb(76, 209, 55); color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log',
     },
     {
-      type: 'warning',
+      type: 'warn',
       text: '%c⚠️ background: rgb(225, 177, 44); color: white; padding: 2px 0.5em; border-radius: 0.5em hello, warn',
     },
     {
@@ -136,7 +136,7 @@ test.serial('log in browser', async (t) => {
       text: '%ccustom-logger-test background: rgb(76, 209, 55); color: white; padding: 2px 0.5em; border-radius: 0.5em hello, log',
     },
     {
-      type: 'warning',
+      type: 'warn',
       text: '%ccustom-logger-test background: rgb(225, 177, 44); color: white; padding: 2px 0.5em; border-radius: 0.5em hello, warn',
     },
     {
